@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body ng-controller="test">
+	
+	<div>{{test}}</div>
+	
+	<script type="text/javascript" src="angular.js" ></script>
+	<script>
+		var app=angular.module('app', []);
+		
+		app.controller('test', ['$scope', '$http', function ($scope, $http){ // 这里有顺序，必须严格按照前面引用的顺序写
+			$scope.test=123;
+			$http.get('a.txt').success(function (data, status, header, config){
+				alert(data);
+			});
+		}]);
+		
+	</script>
+</body>
+</html>

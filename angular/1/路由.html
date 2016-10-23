@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	
+	<nav>
+		<a href="#/">首页</a>
+		<a href="#/list">列表页</a>
+		<a href="#/detail">详情页</a>
+	</nav>
+	
+	<div ng-view></div>
+	
+	<script src="angular.js" "></script>
+	<script src="angular-route.min.js"></script>
+	<script>
+		var app=angular.module('app', ['ngRoute']);
+		
+		app.config(['$routeProvider', function ($routeProvider){
+			$routeProvider
+			.when('/', {
+				template:'这是首页'
+			})
+			.when('/list', {
+				template:'这是列表页'
+			})
+			.when('/detail', {
+				template:'这是详情页'
+			})
+			.otherwise({
+				redirectTo:'/'
+			});
+		}]);
+	</script>
+</body>
+</html>

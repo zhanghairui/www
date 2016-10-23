@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+/*重置*/
+* { margin:0; padding:0; }
+html { font-family:'Microsoft Yahei'; }
+body { font-size:20px; }
+img, input, textare { border: none; outline: none; }
+a {text-decoration: none;}
+
+/*功能*/
+.left { float:left; }
+.right { float:right; }
+.clearfix:before,
+.clearfix:after{ content: ""; display: table; clear: both; }
+.m-box { position: fixed; top: 0; bottom: 0; left: 0; right: 0; background-color:#F0F4F6; }

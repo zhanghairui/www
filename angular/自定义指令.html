@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	
+	<div my-directive>A</div>
+	<my-directive>E</my-directive>
+	<div class="my-directive">class</div>
+	<!-- directive:my-directive -->
+	
+	<script type="text/javascript" src="angular.js" ></script>
+	<script>
+		var app=angular.module('app', []);
+		
+		app.directive('myDirective', function (){
+			return {
+				restrict:'ECMA',// E元素 Cclass M注释 A属性 
+				replace:true,
+				template:'<div>我是替换后的模板</div>'
+			};
+		});
+	</script>
+</body>
+</html>

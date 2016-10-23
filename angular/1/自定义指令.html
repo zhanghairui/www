@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	<ng-test>E</ng-test>
+	<div class="ng-test">C</div>
+	<div ng-test>A</div>
+	
+	<script src="angular.js"></script>
+	<script>
+		var app=angular.module('app', []);
+		app.directive('ngTest', function (){
+			return {
+				restrict:'ECA',
+				repeat:true,
+				template:'<h1>我是自定义指令</h1>'
+			};
+		});
+	</script>
+</body>
+</html>

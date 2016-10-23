@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title></title>
+<style>
+* { margin: 0; padding: 0; }
+input, button { border: none; outline: none; }
+
+.box { position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: #eee;}
+/*----搜索----*/
+.search { position: relative; height: 44px; background-color: rgba(0, 0, 0, .85); }
+/*right*/
+.search form { position: relative; height: 100%; box-sizing: border-box; padding: 5px 0 5px 6px; margin-left: 37px; margin-right: 10px; }
+.search input[type=search] { box-sizing: border-box; width: 100%; height: 100%; padding-left: 25px; vertical-align: middle; color: #333; background-color: #fff; -webkit-border-radius:2px; font-size: 14px; }
+input[type=search]::-webkit-search-cancel-button{-webkit-appearance: none;}
+.search input[type=submit] { position: absolute; top: 9px; left: 8px; width: 15px; height: 15px; padding: 7px 5px; box-sizing:initial; background: url(icon_search.png) no-repeat center; background-size: 15px; color: transparent; }
+.search input[type=reset] { position: absolute; top: 50%; right: 0; z-index: 1; width: 30px; height: 32px; margin-top: -16px;; color: transparent; background: url(icon_reset.png) no-repeat center; background-size: 15px;}
+/*left*/
+.search button { position: absolute; top: 9px; left: 0; width: 40px; height: 25px; padding: 8px; background: url(icon_back.png) center no-repeat; background-size: contain; }
+
+/*----内容----*/
+.content { position: absolute; top: 44px; bottom: 0; width: 100%; padding: .6em; background-color: #fff; font-size: 14px; box-sizing:border-box; }
+.menu-box { overflow: hidden; padding: 8px; min-height: 60px; color:#999; }
+.menu-title { overflow: hidden; font-size: 12px; }
+.menu-title i { float: left; width: 16px; height: 16px; margin-right:2px; background: url(icon_title.png) no-repeat center; background-size: contain;}
+.menu-title span { float: left; line-height: 18px;}
+.hot-list { overflow: hidden; }
+.hot-list li { list-style: none; float: left; padding: 1px 5px; margin-top: 10px; margin-right: 10px; line-height: 1.6; border: 1px solid #999; border-radius: 2px;}
+</style>
+</head>
+<body>
+	<div class="box">
+		<!--搜索begin-->
+		<div class="search">
+			<form action="" accept-charset="" target="">
+				<input type="search" name="" title="请输入搜索文字" placeholder="88包邮，轻松逛超市" autocomplete="off">
+				<input type="submit" title="提交">
+				<input type="reset" title="重置搜索词">
+			</form>
+			<button></button>
+		</div>
+		<!--搜索end-->
+		<!--内容begin-->
+		<div class="content">
+			<div class="menu-box">
+				<p class="menu-title"><i></i><span>热门搜索</span></p>
+				<ul class="hot-list">
+					<li>外套</li>
+					<li>坚果</li>
+					<li>针织衫</li>
+					<li>四件套</li>
+					<li>洗衣机</li>
+					<li>运动鞋</li>
+					<li>打底裤</li>
+					<li>双肩包</li>
+					<li>夹克</li>
+					<li>短靴</li>
+				</ul>
+			</div>
+		</div>
+		<!--内容end-->
+	</div>
+</body>
+</html>

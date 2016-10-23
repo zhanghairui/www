@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body ng-controller="Controller">
+	
+	<ul>
+		<li ng-repeat="(key, value) in test track  by key">{{value}}</li>
+	</ul>
+	
+	<script src="angular.js" "></script>
+	<script>
+		var app=angular.module('app', []);
+		app.controller('Controller', ['$scope', function ($scope){
+			$scope.test=['a', 'a', 'b'];
+		}]);
+	</script>
+</body>
+</html>

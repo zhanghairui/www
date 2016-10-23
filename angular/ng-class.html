@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+.red { background: red;}
+.green { background: green;}
+</style>
+</head>
+<body ng-controller="test">
+	<!--
+		flag的值为
+			true 就是 red
+			false就是 green
+	-->
+	<h1 ng-class="{true:'red', false:'green'}[flag]">h1h1h1h1h</h1>
+	
+	<script type="text/javascript" src="angular.js" ></script>
+	<script>
+		var app=angular.module('app', []);
+		app.controller('test', function ($scope){
+			$scope.flag=false;
+		});
+	</script>
+</body>
+</html>

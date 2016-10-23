@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app ng-init="json={name:'abc', age:123}">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	<div>{{5+5}}</div>
+	<div>{{5*5}}</div>
+	<div>{{5+''}}</div>
+	<p>bind</p>
+	<div ng-bind="5+5"></div>
+	<div ng-bind="5*5"></div>
+	<div ng-bind="5+''"></div>
+	
+	<div>{{json.name}}</div>
+	<div ng-bind="json.name">dslldsfldsf</div>
+	<script src="angular.js"></script>
+	<!--
+		如果没有module，直接写ng-app就可以了
+	-->
+</body>
+</html>

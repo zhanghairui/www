@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body ng-controller="Controller">
+	
+	<button ng-click="show($event)">点我</button>
+	
+	<script src="angular.js" "></script>
+	<script>
+		var app=angular.module('app', []);
+		app.controller('Controller', ['$scope', function ($scope){
+			$scope.show=function (e){
+				alert(e.clientX);
+			};
+		}]);
+	</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body ng-controller="test">
+	<div ng-init="text='abc';flag=true;show()">
+		<h1 ng-if="flag">{{text}}</h1>
+	</div>
+	
+	<script type="text/javascript" src="angular.js" ></script>
+	<script>
+		var app=angular.module('app', []);
+		app.controller('test', function ($scope){
+			$scope.text='123';
+			$scope.show=function (){
+				alert(123);
+			};
+		});
+	</script>
+</body>
+</html>

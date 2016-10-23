@@ -1,0 +1,17 @@
+/*--头部--*/
+#header { position: fixed; top: 0; left: 0; z-index: 9998; width: 100%; background: red;/**/}
+.header-content { display: flex; position: relative; background:-webkit-linear-gradient(top, rgba(0,0,0,0.7), rgba(0,0,0)); }
+.header-content .menu {}
+.header-content .search {}
+.header-content .login {}
+
+
+
+
+
+/*--底部banner--*/
+.bottom-banner { position: fixed; left: 0; bottom: 0; z-index: 9998; width: 100%; }
+.bottom-banner a { display: block; }
+.bottom-banner img { width: 100%;}
+.bottom-banner .close { position: absolute; right: 0; top: 0; width: 30px; height: 30px; background: url(../images/icon_close.png) no-repeat rgba(0, 0, 0, 0.2) 15px 4px; background-size: 12px; border-radius: 0 0 0 30px; }
+

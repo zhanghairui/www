@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	<h1>我是iframe页</h1>
+	<input type="button" value="弹框" id="btn">
+	<script>
+		var sObj='<div class="pop-shadow"></div> \
+			<div class="pop-content">文字文字文字文字</div>';
+			
+		var oBtn=document.querySelector('input[type=button]');
+		var oDiv=document.createElement('div');
+		oDiv.innerHTML=sObj;
+		oDiv.id='pop';
+		oBtn.onclick=function (){
+			var oParent=parent.document;
+			oParent.body.appendChild(oDiv);
+		};
+	</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	
+	<div my-tab my-id="div1" my-name="asdfafasf" my-fn="show(num)">123123</div>
+	
+	<script type="text/javascript" src="angular.js" ></script>
+	<script>
+		var app=angular.module('app', []);
+		
+		app.controller('test', function ($scope){
+			$scope.name='a';
+			$scope.show=function (num){
+				alert(num);
+			};
+		});
+		
+		app.directive('myTab', function (){
+			return {
+				restrict:'ECMA',
+				replace:true,
+				scope:{
+					myId:'@',
+					myName:'@',
+					myFn:'&'
+				},
+				controller:['$scope', function ($scope){
+					$scope.name='this is a test name';
+				}],
+				template:'<div>{{myId}} - {{name}}</div>',
+				// link 表示当directive被angular编译后，执行该方法。
+				link:function (scope, ele, attr){
+					angular.element(ele).css('background', 'red');
+					// scope表示controller下面的数据。
+					// ele 表示当前的DOM元素。
+					// attr表示这个DOM元素上的自定义属性
+					
+//					alert('end');
+//					alert(scope.name);
+//					alert(JSON.stringify(attr));
+				}
+			};
+		});
+	</script>
+</body>
+</html>

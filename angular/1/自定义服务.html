@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	<div ng-controller="Controller">{{num}}</div>
+	
+	<script src="angular.js"></script>
+	<script>
+		var app=angular.module('app', []);
+		// 自定义服务
+		app.service('testService', function (){
+			this.to16=function (x){
+				return x.toString(2);
+			};
+		});
+		
+		// 调用自定义服务
+		app.controller('Controller', ['$scope', 'testService', function ($scope, testService){
+			// 调用自定义服务中的 to16 方法
+			$scope.num=testService.to16(16);
+		}]);
+	</script>
+	<!--
+		自定义不要用 $ 开头，避免与系统服务重复
+	-->
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	<div ng-controller="Controller">{{a}}</div>
+	
+	<script src="angular.js"></script>
+	<script>
+		var app=angular.module('app', []);
+		app.controller('Controller', ['$timeout', '$scope', function ($timeout, $scope){
+			$scope.a=0;
+			$timeout(function (){
+				$scope.a=100;
+				alert('a');
+			}, 1000);
+		}]);
+		
+		app.controller('Controller2', ['$interval', '$scope', function ($interval, $scope){
+			$scope.a=0;
+			$interval(function (){
+				$scope.a=100;
+				alert('a');
+			}, 1000);
+		}]);
+	</script>
+	<!--
+		AngularJS 内建了30 多个服务。
+		常见服务
+			$scope $location $http
+			$timeout -> window.setTimeout
+			$interval -> window.setInterval
+				清空定时器
+					$interval.cancel(timer)
+	-->
+</body>
+</html>

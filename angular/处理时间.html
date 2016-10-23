@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+	<div ng-controller="Dateformat">
+		<div id="div1">{{dateline|dateFormat}}</div>
+	</div>
+	
+	<script src="angular.js"></script>
+	<script>
+		//1476288000000 昨天凌晨 
+		//1476374400000 今天凌晨
+		//1475942400000 周日凌晨
+		//var time=1476694412000; // 当天
+		//var time=1476340986808; // 昨天
+		//var time=1476084446498; // 本周一
+		//var time=1476014435498; // 本周日
+		//var time=1475014435498; // 2016-9-28
+		var app=angular.module('app', []);
+		app.controller('Dateformat', function ($scope){
+			$scope.dateline=1476374400000;
+		});
+		
+		app.filter('dateFormat', function (){
+			return function (dateline){
+				function _toDub(n) {
+					return n < 10 ? '0' + n : n + '';
+				}
+				
+				var oToday = new Date();
+				oToday.setHours(0, 0, 0, 0);
+				var oTodayTime = oToday.getTime();
+				
+				var oYesterday = new Date();
+				oYesterday.setDate(oYesterday.getDate() - 1);
+				oYesterday.setHours(0, 0, 0, 0);
+				var oYesterdayTime = oYesterday.getTime();
+				
+				var oSunday = new Date();
+				var n = oSunday.getDay();
+				oSunday.setDate(oSunday.getDate() - n);
+				oSunday.setHours(0, 0, 0, 0);
+				var oSundayTime = oSunday.getTime();
+				
+				var oDate = new Date();
+				oDate.setTime(dateline);
+				var hour=_toDub(oDate.getHours());
+				var minute=_toDub(oDate.getMinutes());
+				var sHour=hour+':'+minute;
+				
+				if (dateline >= oTodayTime) // 今天
+				{
+					str = sHour;
+				} else if (dateline >= oYesterdayTime) // 昨天
+				{
+					str = '昨天 '+sHour;
+				} else if (dateline >= oSundayTime) // 本周
+				{
+					var week = oDate.getDay();
+					var arr = ['周日', '周一 ', '周二 ', '周三 ', '周四 ', '周五 ', '周六 ', ];
+					str = arr[week]+' '+sHour;
+				} else {
+					var year = oDate.getFullYear();
+					var month = oDate.getMonth();
+					var date = oDate.getDate();
+					str = year + '-' + _toDub(month + 1) + '-' + _toDub(date)+' '+sHour;
+				}
+		
+				return str;
+			};
+		});
+	</script>
+</body>
+</html>

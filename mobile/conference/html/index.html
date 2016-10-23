@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!--控制页面缩放-->
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<!--强制竖屏-->
+<meta name="screen-orientation" content="portrait">
+<!--是否全屏-->
+<meta name="full-screen" content="no">
+<!--是否忽略电话、地址、邮箱-->
+<meta name="format-detection" content="telephone=no, address=no, email=no">
+<link href="../css/base.css" rel="stylesheet">
+<script src="../js/mobile.js"></script>
+<style>
+.info-box { height: 3.8rem; padding-top:.89rem; box-sizing:border-box; background-color: #1996FC; }
+.portrait { overflow:hidden; width: 68px; height: 68px; margin:0 auto; border-radius:50%; margin-bottom:.21rem; }
+.portrait img { display:block; width:100%; }
+.info-box p { text-align:center; }
+.username { height:0.3rem; margin-bottom:0.23rem; font-size:0.3rem; color:#fff; }
+.c-id, .c-id span { font-size:.25rem; color:#D9ECFC; }
+
+.btn-box { float:left; width:3.75rem; padding:0.6rem 1.22rem; box-sizing:border-box; border-bottom:1px solid #E3E4EC; }
+.btn-box:first-child { border-right:1px solid #E3E4EC; }
+.btn-box img { display:block; width:1.3rem; height:1.3rem; border-radius:50%; }
+.btn-box .text { display:block; margin-top:0.24rem; font-size:0.31rem; }
+</style>
+<title>视频会议</title>
+</head>
+<body>
+	<div class="m-box">
+		<div class="info-box">
+			<div class="portrait">
+				<img src="http://img1.imgtn.bdimg.com/it/u=2504895810,4120167449&fm=21&gp=0.jpg" title="贾爱华">
+			</div>
+			<p class="username">贾爱华</p>
+			<p class="c-id">个人会议号:<span>12345678910</span></p>
+		</div>
+		
+		<div class="enter-box clearfix">
+			<div class="join btn-box">
+				<a href="">
+					<img src="http://img1.imgtn.bdimg.com/it/u=2504895810,4120167449&fm=21&gp=0.jpg" title="加入会议">
+				</a>
+				<a href="" class="text">加入会议</a>
+			</div>
+			<div class="sponsor btn-box">
+				<a href="">
+					<img src="http://img1.imgtn.bdimg.com/it/u=2504895810,4120167449&fm=21&gp=0.jpg" title="发起会议">
+				</a>
+				<a href="" class="text">发起会议</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

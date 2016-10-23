@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	<div ng-controller="Controller">
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Url</th>
+				<th>Country</th>
+			</tr>
+			<tr ng-repeat="site in sites">
+				<td ng-bind="site.Name"></td>
+				<td ng-bind="site.Url"></td>
+				<td ng-bind="site.Country"></td>
+			</tr>
+		</table>
+	</div>
+	<script src="angular.js" "></script>
+	<script>
+		var app=angular.module('app', []);
+		app.controller('Controller', ['$scope', '$http', function ($scope, $http){
+			$http.get('data').success(function (res){
+				$scope.sites=res.sites;
+			});
+		}]);
+	</script>
+</body>
+</html>

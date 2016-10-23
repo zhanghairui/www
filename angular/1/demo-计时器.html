@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-controller="Root">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	<div ng-controller="TimeController">
+		<input type="text" value="{{sTime}}">
+		<input type="button" ng-click="start()" value="start">
+		<input type="button" ng-click="stop()" value="stop">
+	</div>
+	<script src="angular.js"></script>
+	<script>
+		var app=angular.module('app', []);
+		
+		app.controller('Root', ['$scope', '$rootScope', function ($scope, $rootScope){
+			$rootScope._toDub=function (n){
+				return n<10 ? '0'+n : ''+n;
+			};
+		}]);
+		
+		app.controller('TimeController', ['$scope', '$rootScope', '$interval', function ($scope, $rootScope, $interval){
+			var total=0;
+			var timer=null;
+			
+			$scope.sTime='00:00';			
+			$scope.start=function (){
+				$interval.cancel(timer);
+				timer=$interval(function (){
+					total++;
+					var m=$rootScope._toDub(Math.floor(total/60));
+					var s=$rootScope._toDub(total%60);
+					
+					$scope.sTime=m+':'+s;
+				}, 100);
+			};
+			
+			$scope.stop=function (){
+				$interval.cancel(timer);
+			};
+		}]);
+	</script>
+</body>
+</html>

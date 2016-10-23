@@ -1,0 +1,220 @@
+
+【表达式】
+	{{}}		用户可能看到未解析的数据
+	ng-bind		用户不会看到未解析的数据
+		ng-bind如何修改input的值呢
+		用ng-model
+
+【指令/directive】—— 指令是扩展的 HTML 属性，带有前缀 ng-
+	ng-app 定义边界，页面中哪部分受angular管理
+	ng-init 初始化应用程序数据，或执行一些方法
+	ng-model 把数据绑定到表单，或把表单的值绑定到控制器（ng-model就是给input用的吧？）
+		双重绑定
+		$valid字段内容合法的  $error $dirty表单有填写记录 $touched
+		只要input上有n-model指令，就会根据条件给input标签加上以下的class名
+    		ng-empty ng-not-empty ng-touched ng-untouched ng-valid ng-invalid ng-dirty ng-pending ng-pristine
+
+	ng-repeat 循环
+		$index $first $last $middle $odd $even
+		这种情况下$scope.test=['a', 'a', 'b']; 'a'重复了，angular会报错，因为angularjs需要一个唯一值来与生成的dom绑定，以方便追踪数据。。用 track by可以解决错误，代码如下：<li ng-repeat="(key, value) in test track  by key">{{value}}</li>
+
+	ng-options
+		ng-options 比 ng-repeat 据说 省内存，速度快
+		<select ng-model="selected" ng-options="color.name group by color.shade for color in colors"></select>
+
+	ng-class
+	ng-style
+	ng-src
+	ng-href
+		img和a标签都是并行加载的，angular根本没有机会去拦截。使用ng-src和ng-href可以解决问题。
+		不能用 <a hreef="{{xxx}}">
+	ng-show
+	ng-hide
+	ng-disabled
+
+	自定义指令
+		app.directive('ngTest', function (){
+			return {
+				restrict:'ECM',
+				repeat:true,
+				template:'<h1>我是自定义指令</h1>'
+			};
+		});
+
+【controller】
+	控制器命名时，首字母大写。
+	定义
+		第一种
+			app.controller('控制器名', function ($scope, $http){});
+
+		第二种
+			app.controller('控制器名', ['$scope', '$http', function ($scope, $http){}]);
+
+		总结：第一种写法不能压缩代码，第二种可以压缩代码。第一种service没有顺序，第二种有顺序。
+
+【服务】—— service
+	AngularJS 内建了30 多个服务。
+	$scope 是 HTML 与控制器之间的纽带，可以传递方法和变量。
+	$rootScope 是每个控制器之间的纽带，可以在每个controller中使用。
+	** $location
+
+	** 前后台交互 $http
+		$http.get('data').success(function (res){
+			$scope.sites=res.sites;
+		});
+		跨域怎么弄？
+
+	定时器
+		var timer=$timeout 相当于 setTimeout
+		var timer=$interval 相当于 setInterval
+		清除定时器 $interval.cancel(timer)
+
+
+【angular.bootstrap】
+	angular.bootstrap(element, [modules], [config]);
+		其中第一个参数element:是绑定ng-app的dom元素；
+		modules：绑定的模块名字
+		config：附加的配置
+
+【路由】
+	app.config(function ($routeProvider, $stateProvider, $urlRouterProvider, $compileProvider){
+
+	});
+
+	$stateProvider.state() 的每个参数代表什么
+	$urlRouterProvider() 
+	
+【事件】
+	ng-click
+	ng-事件名
+		<h1 ng-click="show()">h1h1h1h1h</h1>
+
+		// $event 是事件对象，可以传给事件函数
+		<h1 ng-click="show($event)">h1h1h1h1h</h1>
+
+
+【过滤器】filter
+	自带9种过滤器
+		currency(货币处理) {{num | currency : '￥'}}
+		date(日期格式化) {{date | date : 'yyyy-MM-dd hh:mm:ss EEEE'}} 
+		filter(匹配子串) 
+		json(格式化json对象) json过滤器可以把一个js对象格式化为json字符串，没有参数。 这个过滤器一般在实际生产环境中用不到，官方的解释是方便开发者调试。
+		limitTo(限制数组长度或字符串长度) {{ arr | limitTo : 2 }} //将会显示数组中的前两项
+		uppercase(大写)
+		lowercase(小写)
+		number(格式化数字)number过滤器可以为一个数字加上千位分割，像这样，123,456,789。同时接收一个参数，可以指定小float类型保留几位小数.  {{ num | number : 2 }}
+		orderBy(排序) {{ childrenArray | orderBy : 'age' }} 按age属性值进行排序 
+
+	<div id="div1">{{str|test:1:2}}</div>
+	<div ng-bind="str|test:1:2"></div>
+
+	多个过滤器之间用 | 管道符分隔
+		{{data|过滤器1|过滤器2}}
+	多个参数之间用 : 冒号分隔
+		{{num|过滤器:参数1:参数2}}
+
+	自定义过滤器
+		app.filter('过滤器名', function (){
+			// input 是过滤器前的数据
+			return function (input){
+				//处理的代码
+				...
+				// 处理后，把结果return出去
+				return res;
+			};
+		});
+
+		// 下面这种定义方式代表什么？$rootScope 代表父?
+		// 两种定义filter的方法有什么不同？
+		app.filter('getSpectacle', ['$rootScope', function($rootScope) {
+			return function (input){
+				return res;
+			};
+		}]);
+
+【自带的函数】
+	angular.copy
+	angular.lowercase
+	angular.uppercase
+	angular.isString
+	angular.isNumber
+
+【路由】
+	AngularJS 路由 就通过 # + 标记帮助我们区分不同的逻辑页面并将不同的页面绑定到对应的控制器上。
+	依赖 angular-route.js 
+	该 div 内的 HTML 内容会根据路由的变化而变化。 <div ng-view></div>
+	$routeProvider.when(url或url正则, json);
+		第一个参数是 URL 或者 URL 正则规则。第二个参数是路由配置对象（对象就是json）
+		json可以配置的项目：
+			template 在ng-view插入的简单的html代码
+			templateUrl 如果HTML内容较多，可以插入一个HTML模板
+			controller ng-view的模板使用的controller
+			controllerAs 为controller起别名
+			redirectTo 重定向
+			resolve 当前controller依赖的其他模块
+	app.config(['$routeProvider', function ($routeProvider){
+		$routeProvider
+		.when('/', {
+			template:'这是首页'
+		})
+		.when('/list', {
+			template:'这是列表页'
+		})
+		.when('/detail', {
+			template:'这是详情页'
+		})
+		.otherwise({
+			redirectTo:'/'
+		});
+	}]);
+
+还需要学习的地方
+---------------------------------
+	完整的案例
+		小、大
+	路由 router
+		$stateProvider
+		$routeProvider
+		$urlRouterProvider
+		$compilePrivder
+
+	$http
+	$watch
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+【require】
+	
+	require.config({
+		paths:{
+			'angular':'../lib/angular',
+			'jquery':'../lib/jquery.1.7.2'
+		}
+	})
+
+	paths 用来配置模块id与文件路径的对应关系
+
+名称			所属		作用
+ngView			DIRECTIVE	提供不同路由模板插入的视图层
+$routeProvider	PROVIDER	提供路由配置
+$route			SERVICE		用于构建各个路由的url、view、controller这三者的关系
+$routeParams	SERVICE		解析返回路由中带有的参数

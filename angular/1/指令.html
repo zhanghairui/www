@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app ng-init="userlist=[
+	{name:'张三', age:18, sex:1},
+	{name:'小红', age:28, sex:0},
+	{name:'李四', age:8, sex:1}
+]">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	<input type="text" ng-model="username">
+	<p>{{username}}</p>
+	<hr>
+	<h3>计算器</h3>
+	<input type="number" ng-model="n1">
+	*
+	<input type="number" ng-model="n2">
+	<p>res:{{n1*n2}}</p>
+	<hr>
+	<dl>
+		<dt>用户列表</dt>
+		<dd ng-repeat="user in userlist">用户名：{{user.name}} 年龄：{{user.age}} 性别：{{user.sex?'男':'女'}}</dd>
+	</dl>
+	<script src="angular.js"></script>
+	<!--
+		AngularJS 指令是扩展的 HTML 属性，带有前缀 ng-。
+		ng-app 指令初始化一个 AngularJS 应用程序。
+		ng-init 指令初始化应用程序数据。不常见
+		ng-model 指令把元素值（比如输入域的值）绑定到应用程序。
+		ng-repeat 循环
+	-->
+</body>
+</html>

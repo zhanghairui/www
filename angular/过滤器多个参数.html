@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+	<div ng-controller="Dateformat">
+		<div>{{str|test:1:2}}</div>
+		<div ng-bind="str|test:1:2"></div>
+	</div>
+	
+	<script src="angular.js"></script>
+	<script>
+		var app=angular.module('app', []);
+		app.controller('Dateformat', function ($scope){
+			$scope.str='abc';
+		});
+		
+		app.filter('test', function (){
+			return function (input, param1, param2){
+				return param2;
+			};
+		});
+	</script>
+</body>
+</html>

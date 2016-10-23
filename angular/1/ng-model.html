@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+input.ng-invalid { background:red; }
+</style>
+</head>
+<body>
+	<form name="myForm">
+    	Email:
+    	<input type="email" name="myAddress" ng-model="text" required>
+   		<span ng-show="myForm.myAddress.$error.email">不是一个合法的邮箱地址</span>
+	    <div>
+		    valid:{{myForm.myAddress.$valid}}<br />
+		    error:{{myForm.myAddress.$error}}<br />
+		    dirty:{{myForm.myAddress.$dirty}}<br />
+		    touched:{{myForm.myAddress.$touched}}<br />
+	    </div>
+	    <hr>
+    </form>
+    
+    <input type="text" ng-model="a" required>
+    <!--
+    	只要input上有n-model指令，
+    	就会根据条件给input标签加上以下的class名
+    		ng-empty
+			ng-not-empty
+			ng-touched
+			ng-untouched
+			ng-valid
+			ng-invalid
+			ng-dirty
+			ng-pending
+			ng-pristine
+    -->
+
+	<script src="angular.js"></script>
+</body>
+</html>

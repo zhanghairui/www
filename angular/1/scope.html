@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	<div ng-controller="Controller1">Controller1 -> {{a+c}}</div>
+	
+	<div ng-controller="Controller2">Controller2 -> {{a+c}}</div>
+	
+	<script src="angular.js"></script>
+	<script>
+		var app=angular.module('app', []);
+		app.controller('Controller1', ['$scope', function ($scope){
+			$scope.a=1;
+		}]);
+		
+		app.controller('Controller2', ['$scope', '$rootScope', function ($scope, $rootScope){
+			$scope.a=2;
+			$rootScope.c=3;
+		}]);
+		
+	</script>
+	<!--
+		Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的纽带。
+		$rootScope  定义的值，可以在每个 controller 中使用。是每个 controller 中 scope 的桥梁。
+	-->
+</body>
+</html>
