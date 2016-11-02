@@ -2,24 +2,71 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!--控制页面缩放-->
-<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-<!--强制竖屏-->
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="screen-orientation" content="portrait">
-<!--是否全屏-->
 <meta name="full-screen" content="no">
-<!--是否忽略电话、地址、邮箱-->
 <meta name="format-detection" content="telephone=no, address=no, email=no">
-<link href="../../common/css/common.css" rel="stylesheet">
-<title></title>
+<script src="../js/mobile.js"></script>
+<link href="../css/base.css" rel="stylesheet">
+<title>发起会议-设置</title>
 <style>
-.box { position: fixed; top: 0; bottom: 0; left: 0; right: 0; background-color:#F0F4F6; }
+.u-inp { overflow: hidden; padding-left:0.24rem; padding-right: 0.24rem; text-align: left; border-bottom: 1px solid #E3E4EC; }
+.u-open-btn { overflow: hidden; display: block; position: relative; width: 1rem; height: 0.5rem; border-radius: 0.3rem; border: 1px solid #e5e5e5; -webkit-tap-highlight-color:rgba(0,0,0,0); }
+.u-open-btn.open { background-color:#47B1FC; border-color:#47B1FC; }
+.u-open-btn i { position: absolute; top: 0; left: 0; width: 0.5rem; height: 0.5rem; border-radius: 50%; box-shadow: 1px 1px 1px rgba(0,0,0,0.3); background-color:#fff;
+-webkit-transition: 0.02s all ease-in; transition: 0.02s all ease-in; }
+.u-open-btn.open i { box-shadow: 0 0 0; }
+.u-inp .pwd { width: 2.6rem; text-align: right; }
 </style>
 </head>
 <body>
-	<div class="box">
-	
+	<div class="m-box">
+		<form action="" target="" method="" class="m-form">
+			<div class="u-inp">
+				<span class="tit left">个人会议号</span>
+				<span class="cid right">1834024923</span>
+			</div>
+			<div class="u-inp">
+				<span class="tit left">允许在支持人之前加入会议</span>
+				<span class="u-open-btn right"><i></i></span>
+			</div>
+			<div class="u-inp">
+				<span class="tit left">会议密码</span>
+				<input type="password" placeholder="空密码" class="pwd right">
+			</div>
+			<a href="javascript:;" class="u-btn disabled">保存</a>
+		</form>
 	</div>
-视频会议首页
+	<script src="../js/zepto.min.js"></script>
+	<script>
+		/*开关滑块*/
+		(function (){
+			var aBtn=$('.u-open-btn');
+
+			aBtn.each(function (){
+				var oBtn=$(this);
+				var bOpen=false;
+		
+				oBtn.click(function (){
+					var oBlock=oBtn.find('i');
+					var nDis=oBtn.width()-oBlock.width();
+					if (bOpen)
+					{
+						// 关闭
+						oBlock.css('left', 0+'px');
+						oBtn.removeClass('open');
+					}
+					else
+					{
+						// 打开
+						oBlock.css('left', nDis+'px');
+						oBtn.addClass('open');
+					}
+					bOpen=!bOpen;
+				});
+			});
+		})();
+
+	</script>
 </body>
 </html>

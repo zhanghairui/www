@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<!--[if lt IE 9]>
+<script src="../js/html5shiv.min.js"></script>
+<script src="../js/respond.min.js"></script>
+<![endif]-->
+<title>客服管理</title>
+<link href="css/common.css" rel="stylesheet">
+<link href="css/customer_manage.css" rel="stylesheet">
+</head>
+<body>
+	<div class="manage-box">
+		<!-- 顶部 begin -->
+		<header class="manage-header">
+			<div class="title left">U订货-李宁鞋业</div>
+			<a href="#" class="btn right">切换到客服模式</a>
+
+			<!-- 
+				success 成功
+				remind	提醒
+				warning 警告
+				error	错误
+			 -->
+			<p class="manage-msg" id="j-manage-msg">提醒</p>
+		</header>
+		<!-- 顶部 end -->
+
+		<div class="manage-main">
+			<div class="manage-content clearfix">
+				<!-- 右侧 begin -->
+				<div class="manage-right-bar">
+					<!-- 右上顶部 begin -->
+					<div class="top-bar">
+						<h3 class="title left">客服</h3>
+						<a href="javascript:;" class="btn right" id="j-add-btn">添加客服</a>
+						<div class="search right">
+							<span></span>
+							<input type="search" placeholder="请输入用户名搜索">
+						</div>
+					</div>
+					<!-- 右上顶部 end -->
+					<!-- 列表 begin -->
+					<table class="user-list">
+						<thead>
+							<tr>
+								<th class="name">昵称</th>
+								<th class="email">邮箱</th>
+								<th class="phone">手机号</th>
+								<th class="status">状态</th>
+								<th class="num">接待数</th>
+								<th class="role">权限</th>
+								<th class="ctrl">操作</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<!-- 循环 begin -->
+							<tr>
+								<td class="name">贾爱华</td>
+								<td class="email">314993829@qq.com</td>
+								<td class="phone">13027738847</td>
+								<td class="status">在线</td>
+								<td class="num">10</td>
+								<td class="role">普通客服</td>
+								<td class="ctrl"><a href="javascript:;" class="editor-btn">编辑</a><a href="javascript:;">删除</a></td>
+							</tr>		
+							<!-- 循环 end -->
+
+							<!-- 循环 begin -->
+							<tr>
+								<td class="name">贾爱华</td>
+								<td class="email">314993829@qq.com</td>
+								<td class="phone">13027738847</td>
+								<td class="status">在线</td>
+								<td class="num">10</td>
+								<td class="role">普通客服</td>
+								<td class="ctrl"><a href="javascript:;" class="editor-btn">编辑</a><a href="javascript:;">删除</a></td>
+							</tr>
+							<!-- 循环 end -->
+
+							<!-- 循环 begin -->
+							<tr>
+								<td class="name">贾爱华</td>
+								<td class="email">314993829@qq.com</td>
+								<td class="phone">13027738847</td>
+								<td class="status">在线</td>
+								<td class="num">10</td>
+								<td class="role">普通客服</td>
+								<td class="ctrl"><a href="javascript:;" class="editor-btn">编辑</a><a href="javascript:;">删除</a></td>
+							</tr>		
+							<!-- 循环 end -->
+
+							<!-- 循环 begin -->
+							<tr>
+								<td class="name">贾爱华</td>
+								<td class="email">314993829@qq.com</td>
+								<td class="phone">13027738847</td>
+								<td class="status">在线</td>
+								<td class="num">10</td>
+								<td class="role">普通客服</td>
+								<td class="ctrl"><a href="javascript:;" class="editor-btn">编辑</a><a href="javascript:;">删除</a></td>
+							</tr>		
+							<!-- 循环 end -->
+						</tbody>
+					</table>
+					<!-- 列表 end -->
+				</div>
+				<!-- 右侧 end -->
+				<!-- 左侧 begin -->
+				<div class="manage-left-bar">
+					<div class="user-info">
+						<img src="images/login_portrait.png" title="贾爱华" width="38" height="38" class="portrait">
+						<p class="username">贾爱华</p>
+					</div>
+
+					<ul class="manage-nav-list">
+						<li class="j-on-off">
+							<a href="javascript:;" class="btn open">成员管理</a>
+							<ul class="list">
+								<li><a href="#" class="active">客服管理</a></li>
+								<li><a href="#">角色管理</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!-- 左侧 end -->
+
+				<!-- 添加/编辑客服 begin -->
+				<div class="add-service side-bar" id="j-side"></div>
+				<!-- 添加/编辑客服 end -->
+
+				<!-- 确认弹框 begin -->
+				<!-- 确认弹框 end -->
+			</div>
+		</div>
+	</div>
+
+	<!-- 添加客服tpl begin -->
+	<script type="text/html" id="add-tpl">
+		<div class="top-bar">
+			<p>添加客服</p>
+			<span class="close-btn" id="j-close-btn"></span>
+		</div>
+		<form id="j-form">
+			<div class="side-cont">
+				<div class="form-block">
+					<!-- 表单 begin -->
+					<div class="form-line">
+						<label for="nickname">
+							<span>*</span>
+							昵称
+						</label>
+						<div class="inp-box">
+							<input type="text" autocomplete="off" id="nickname" class="j-count-inp">
+							<span class="num j-count-num">1/20</span>
+						</div>
+					</div>
+					<!-- 表单 end -->
+					<!-- 表单 begin -->
+					<div class="form-line">
+						<label for="accounts">
+							<span>*</span>
+							账号
+						</label>
+						<div class="inp-box">
+							<input type="text" autocomplete="off" id="accounts" class="j-count-inp">
+							<span class="num j-count-num">1/20</span>
+						</div>
+					</div>
+					<!-- 表单 end -->
+					<!-- 表单 begin -->
+					<div class="form-line">
+						<label for="password">
+							<span>*</span>
+							密码
+						</label>
+						<div class="inp-box">
+							<input type="password" autocomplete="off" id="password" class="j-count-inp">
+							<span class="num j-count-num">1/20</span>
+						</div>
+					</div>
+					<!-- 表单 end -->
+					<!-- 表单 begin -->
+					<div class="form-line">
+						<label for="chk-password">
+							<span>*</span>
+							确认密码
+						</label>
+						<div class="inp-box">
+							<input type="password" autocomplete="off" id="chk-password" class="j-count-inp">
+							<span class="num j-count-num">1/20</span>
+						</div>
+					</div>
+					<!-- 表单 end -->
+					<!-- 表单 begin -->
+					<div class="form-line">
+						<label for="name">姓名</label>
+						<div class="inp-box">
+							<input type="text" autocomplete="off" id="name">
+						</div>
+					</div>
+					<!-- 表单 end -->
+					<!-- 表单 begin -->
+					<div class="form-line">
+						<label for="email">邮箱</label>
+						<div class="inp-box">
+							<input type="text" autocomplete="off" id="email" class="j-count-inp">
+							<span class="num j-count-num">1/50</span>
+						</div>
+					</div>
+					<!-- 表单 end -->
+					<!-- 表单 begin -->
+					<div class="form-line">
+						<label for="phone">
+							<span>*</span>
+							手机号
+						</label>
+						<div class="inp-box">
+							<input type="text" autocomplete="off" id="phone">
+						</div>
+					</div>
+					<!-- 表单 end -->
+					<!-- 表单 begin -->
+					<div class="form-line">
+						<label for="number">工号</label>
+						<div class="inp-box">
+							<input type="text" autocomplete="off" id="number" class="j-count-inp">
+							<span class="num j-count-num">1/20</span>
+						</div>
+					</div>
+					<!-- 表单 end -->
+					<!-- 表单 begin -->
+					<div class="form-line">
+						<label for="max-num">接待人数</label>
+						<div class="inp-box">
+							<input type="text" autocomplete="off" id="max-num">
+						</div>
+					</div>
+					<!-- 表单 end -->
+
+					<!-- 表单 begin -->
+					<div class="form-line">
+						<label>权限</label>
+						<span class="chk active left">管理员</span>
+					</div>
+					<!-- 表单 end -->
+				</div>	
+			</div>
+
+			<div class="submit-box">
+				<input type="submit" value="保存" id="j-submit-btn">
+			</div>
+		</form>
+	</script>
+	<!-- 添加客服tpl end -->
+	
+	<!-- 编辑客服tpl begin -->
+	<script type="text/html" id="editor-tpl">
+		<div class="top-bar">
+			<p>编辑客服</p>
+			<span class="close-btn" id="j-close-btn"></span>
+		</div>
+		<form id="j-form">
+			<div class="side-cont">
+				<div class="form-block">
+					<!-- 表单 begin -->
+					<div class="form-line">
+						<label for="nickname">
+							<span>*</span>
+							昵称
+						</label>
+						<div class="inp-box">
+							<input type="text" autocomplete="off" id="nickname" value="爱华" class="j-count-inp">
+							<span class="num j-count-num">1/20</span>
+						</div>
+					</div>
+					<!-- 表单 end -->
+					<!-- 表单 begin -->
+					<div class="form-line">
+						<label for="accounts">
+							账号
+						</label>
+						<div class="value-box">
+							aihuaa0
+						</div>
+					</div>
+					<!-- 表单 end -->
+					<!-- 表单 begin -->
+					<div class="form-line">
+						<label for="password">
+							密码
+						</label>
+						<div class="value-box">
+							<a href="#">重置密码</a>
+						</div>
+					</div>
+					<!-- 表单 end -->
+					<!-- 表单 begin -->
+					<div class="form-line">
+						<label for="name">姓名</label>
+						<div class="inp-box">
+							<input type="text" autocomplete="off" id="name">
+						</div>
+					</div>
+					<!-- 表单 end -->
+					<!-- 表单 begin -->
+					<div class="form-line">
+						<label for="email">邮箱</label>
+						<div class="inp-box">
+							<input type="text" autocomplete="off" id="email" class="j-count-inp">
+							<span class="num j-count-num">1/50</span>
+						</div>
+					</div>
+					<!-- 表单 end -->
+					<!-- 表单 begin -->
+					<div class="form-line">
+						<label for="phone">
+							<span>*</span>
+							手机号
+						</label>
+						<div class="inp-box">
+							<input type="text" autocomplete="off" id="phone">
+						</div>
+					</div>
+					<!-- 表单 end -->
+					<!-- 表单 begin -->
+					<div class="form-line">
+						<label for="number">工号</label>
+						<div class="inp-box">
+							<input type="text" autocomplete="off" id="number" class="j-count-inp">
+							<span class="num j-count-num">1/20</span>
+						</div>
+					</div>
+					<!-- 表单 end -->
+					<!-- 表单 begin -->
+					<div class="form-line">
+						<label for="max-num">接待人数</label>
+						<div class="inp-box">
+							<input type="text" autocomplete="off" id="max-num">
+						</div>
+					</div>
+					<!-- 表单 end -->
+
+					<!-- 表单 begin -->
+					<div class="form-line">
+						<label>权限</label>
+						<span class="chk active left">管理员</span>
+					</div>
+					<!-- 表单 end -->	
+				</div>	
+			</div>
+
+			<div class="submit-box">
+				<input type="submit" value="保存" id="j-submit-btn">
+			</div>
+		</form>
+	</script>
+	<!-- 编辑客服tpl end -->
+
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/validate.min.js"></script>
+	<script src="js/template.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/customer_manage.js"></script>
+</body>
+</html>

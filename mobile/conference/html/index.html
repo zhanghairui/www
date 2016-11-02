@@ -2,35 +2,34 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!--控制页面缩放-->
-<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-<!--强制竖屏-->
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="screen-orientation" content="portrait">
-<!--是否全屏-->
 <meta name="full-screen" content="no">
-<!--是否忽略电话、地址、邮箱-->
 <meta name="format-detection" content="telephone=no, address=no, email=no">
-<link href="../css/base.css" rel="stylesheet">
 <script src="../js/mobile.js"></script>
+<link href="../css/base.css" rel="stylesheet">
 <style>
 .info-box { height: 3.8rem; padding-top:.89rem; box-sizing:border-box; background-color: #1996FC; }
-.portrait { overflow:hidden; width: 68px; height: 68px; margin:0 auto; border-radius:50%; margin-bottom:.21rem; }
-.portrait img { display:block; width:100%; }
+.u-portrait { margin:0 auto; margin-bottom:.21rem; }
 .info-box p { text-align:center; }
-.username { height:0.3rem; margin-bottom:0.23rem; font-size:0.3rem; color:#fff; }
-.c-id, .c-id span { font-size:.25rem; color:#D9ECFC; }
+.username { height:0.3rem; margin-bottom:0.23rem; color:#fff; }
+.c-id, .c-id span { color:#D9ECFC; }
 
-.btn-box { float:left; width:3.75rem; padding:0.6rem 1.22rem; box-sizing:border-box; border-bottom:1px solid #E3E4EC; }
+.btn-box { float:left; width:3.75rem; padding:0.6rem 1.22rem; box-sizing:border-box; border-bottom:1px solid #E3E4EC; background-color:#fff; }
+.btn-box:active,
+.btn-box:hover,
+.btn-box:focus,
+.btn-box.active { background-color:#d9d9d9;}
 .btn-box:first-child { border-right:1px solid #E3E4EC; }
 .btn-box img { display:block; width:1.3rem; height:1.3rem; border-radius:50%; }
-.btn-box .text { display:block; margin-top:0.24rem; font-size:0.31rem; }
+.btn-box .text { display:block; margin-top:0.24rem; }
 </style>
 <title>视频会议</title>
 </head>
 <body>
 	<div class="m-box">
 		<div class="info-box">
-			<div class="portrait">
+			<div class="u-portrait">
 				<img src="http://img1.imgtn.bdimg.com/it/u=2504895810,4120167449&fm=21&gp=0.jpg" title="贾爱华">
 			</div>
 			<p class="username">贾爱华</p>
@@ -38,19 +37,23 @@
 		</div>
 		
 		<div class="enter-box clearfix">
-			<div class="join btn-box">
-				<a href="">
-					<img src="http://img1.imgtn.bdimg.com/it/u=2504895810,4120167449&fm=21&gp=0.jpg" title="加入会议">
-				</a>
-				<a href="" class="text">加入会议</a>
-			</div>
-			<div class="sponsor btn-box">
-				<a href="">
-					<img src="http://img1.imgtn.bdimg.com/it/u=2504895810,4120167449&fm=21&gp=0.jpg" title="发起会议">
-				</a>
-				<a href="" class="text">发起会议</a>
-			</div>
+			<a href="join.html" class="join btn-box">
+				<img src="../images/icon_join.png" title="加入会议">
+				<span href="" class="text">加入会议</span>
+			</a>
+			<a href="sponsor.html" class="sponsor btn-box">
+				<img src="../images/icon_sponsor.png" title="发起会议">
+				<span class="text">发起会议</span>
+			</a>
 		</div>
 	</div>
+	<script src="../js/zepto.min.js"></script>
+	<script src="../js/fastclick.min.js"></script>
+	<script>
+		FastClick.attach(document.body);
+		$('.btn-box').on('touchstart', function(){
+			$(this).addClass('active');
+		});
+	</script>
 </body>
 </html>

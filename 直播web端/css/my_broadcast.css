@@ -1,7 +1,0 @@
-/*----我的直播----*/
-
-.right-bar { padding-bottom: 50px; }
-/*--页码--*/
-.broadcast-page { position:absolute; bottom: 20px; left: 0; width: 100%; }
-.broadcast-page ul { position: absolute; left: 50%; }
-.broadcast-page li { position: relative; left: -50%;}

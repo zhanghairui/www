@@ -2,34 +2,52 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!--控制页面缩放-->
-<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-<!--强制竖屏-->
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="screen-orientation" content="portrait">
-<!--是否全屏-->
 <meta name="full-screen" content="no">
-<!--是否忽略电话、地址、邮箱-->
 <meta name="format-detection" content="telephone=no, address=no, email=no">
-<link href="../css/base.css" rel="stylesheet">
 <script src="../js/mobile.js"></script>
-<style>
-.join-form { padding-top:0.2rem; }
-.inp { width:100%; height:1rem; line-height:1rem; font-size:0.3rem; text-align:center; background-color:#FFF; color:#333; }
-.inp:first-child { border-bottom:1px solid #E3E4EC; }
-.sub-box { padding:0 0.23rem; padding-top:0.38rem; }
-.sub-btn { width:100%; height:0.89rem; line-height:0.89rem; text-align:center; background-color:#84C3F9; color:#FFF; }
-</style>
+<link href="../css/base.css" rel="stylesheet">
 <title>加入会议</title>
 </head>
 <body>
-	<div class="m-box">
-		<form action="" target="" method="" class="join-form">
-			<input type="number" name="cid" class="inp" placeholder="请输入会议号">
-			<div class="inp">贾爱华</div>
-			<div class="sub-box">
-				<input type="submit" value="加入会议" class="sub-btn">
-			</div>
-		</form>
-	</div>
+    <div class="m-box">
+        <form action="" target="" method="" class="m-form">
+            <div class="u-inp">
+                <input type="number" name="cid" placeholder="请输入会议号" id="j-inp">
+            </div>
+            <div class="u-inp">test</div>
+            <a href="javascript:;" class="u-btn disabled" id="j-btn">加入会议</a>
+        </form>
+    </div>
+    <script src="../js/fastclick.min.js"></script>
+    <script src="../js/zepto.min.js"></script>
+	<script>
+		FastClick.attach(document.body);
+        /*加入会议按钮*/
+        (function (){
+            var oInp=$('#j-inp');
+            var oBtn=$('#j-btn');
+            var bFlag=false;
+
+            setInterval(function (){
+                if ($.trim(oInp.get(0).value).length > 0)
+                {
+                    oBtn.css('opacity', 1);
+                    bFlag=true;
+                }
+                else
+                {
+                    oBtn.css('opacity', 0.5);
+                    bFlag=false;
+                }
+            }, 30);
+
+            oBtn.click(function (){
+                if ( ! bFlag) return false;
+                // 加入会议
+            });
+        })();
+	</script>
 </body>
 </html>

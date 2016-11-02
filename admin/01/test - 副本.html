@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<!--[if lt IE 9]>
+<script src="../js/html5shiv.min.js"></script>
+<script src="../js/respond.min.js"></script>
+<![endif]-->
+<title></title>
+</head>
+<body>
+	<form id="example-form" action="http://baidu.com">
+		用户名<input type="text" id="username"><br>
+		密码<input type="password" id="pwd"><br>
+		重复密码<input type="password"  id="pwd-confirm"><br>
+		email<input type="text" id="email"><br>
+		最少6个字符<input type="text" id="min-length"><br>
+		最多6个字符<input type="text" id="max-length"><br>
+		<input type="submit" id="btn" value="aaa">
+		<div id="div1"></div>
+	</form>
+
+	<script src="js/validate.min.js"></script>
+	<script>
+		var validator=new FormValidator('example-form', [{
+			name:'username',
+			rules:'required'
+		},{
+			name:'pwd',
+			rules:'required'
+		}, {
+			name:'pwd-confirm',
+			rules:'required|matches[pwd]'
+		}, {
+			name:'email',
+			rules:'required|valid_email'
+		}, {
+			name:'min-length',
+			rules:'required|min_length[6]'
+		},{
+			name:'max-length',
+			rules:'required|max_length[6]'
+		}], function (error, event){
+			if (error.length > 0)
+			{
+				console.log(error);
+			}
+		});
+
+		validator.setMessage('required', '此项为必填项');
+	</script>
+</body>
+</html>

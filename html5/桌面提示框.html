@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>桌面提示框</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+	<input type="button" value="通知">
+    <script>
+    	var oBtn=document.querySelector('input');
+    	var title='测试标题';
+    	var options={
+    		body:'测试内容',
+    		icon:'https://ss1.baidu.com/73N1bjeh1BF3odCf/it/u=1932054339,2143277847&fm=202&gp=0.jpg'
+    	};
+    	oBtn.onclick=function (){
+    		if (window.Notification)
+    		{
+    			if (Notification.permission == 'granted')
+    			{
+    				show();
+    			}
+    			else
+    			{
+    				Notification.requestPermission(function (permission) {
+				      // If the user accepts, let's create a notification
+				      if (permission === "granted") {
+				        show();
+				      }
+				    });
+    			}
+    		}
+    		else
+    		{
+    			alert('浏览器不支持');
+    		}
+    	};
+
+    	function show()
+    	{
+    		setTimeout(function (){
+				new Notification(title, options);
+			}, 3000);
+    	}
+    </script>
+</body>
+</html>
