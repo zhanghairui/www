@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<!--[if lt IE 9]>
+<script src="../js/html5shiv.min.js"></script>
+<script src="../js/respond.min.js"></script>
+<![endif]-->
+<title>角色管理</title>
+<link href="css/common.css" rel="stylesheet">
+<link href="css/role_manage.css" rel="stylesheet">
+</head>
+<body>
+	<div class="manage-box">
+		<!-- 顶部 begin -->
+		<header class="manage-header">
+			<div class="title left">U订货-李宁鞋业</div>
+			<a href="#" class="btn right">切换到客服模式</a>
+
+			<!-- 
+				success 成功
+				remind	提醒
+				warning 警告
+				error	错误
+			 -->
+			<p class="manage-msg" id="j-manage-msg">提醒</p>
+		</header>
+		<!-- 顶部 end -->
+
+		<div class="manage-main">
+			<div class="manage-content clearfix">
+				<!-- 右侧 begin -->
+				<div class="manage-right-bar">
+					<div class="list-row">
+						<!-- 角色管理 begin -->
+						<div class="list-left-bar">
+							<div class="top-bar">
+								<h3 class="title left">角色管理</h3>
+								<a href="javascript:;" class="btn right" id="j-add-btn">添加角色</a>
+							</div>
+							<!-- 角色列表 begin -->
+							<ul class="role-list">
+								<!-- 循环 begin -->
+								<li>
+									<span>售前组</span>
+									<a href="javascript:;">删除</a>
+									<a href="javascript:;">修改</a>
+								</li>
+								<!-- 循环 end -->
+
+								<!-- 循环 begin -->
+								<li>
+									<span>售后组</span>
+									<a href="javascript:;">删除</a>
+									<a href="javascript:;">修改</a>
+								</li>
+								<!-- 循环 end -->
+
+								<!-- 循环 begin -->
+								<li>
+									<span>售前2组</span>
+									<a href="javascript:;">删除</a>
+									<a href="javascript:;">修改</a>
+								</li>
+								<!-- 循环 end -->
+							</ul>
+							<!-- 角色列表 end -->
+						</div>
+						<!-- 角色管理 end -->
+
+						<!-- 角色成员 begin -->
+						<div class="list-right-bar">
+							<div class="top-bar">
+								<h3 class="title left">角色成员</h3>
+								<a href="javascript:;" class="left link">管理组成员</a>
+							</div>
+							<!-- 列表 begin -->
+					<table class="user-list" id="j-user-list">
+						<thead>
+							<tr>
+								<th class="name">客服昵称</th>
+								<th class="accounts">帐号</th>
+								<th class="num">接待数</th>
+								<th class="role">权限</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<!-- 循环 begin -->
+							<tr>
+								<td class="name" data-name="nickname">昵称1</td>
+								<td class="accounts">abcedf</td>
+								<td class="num" data-name="num">10</td>
+								<td class="role">普通客服</td>
+							</tr>		
+							<!-- 循环 end -->
+						</tbody>
+					</table>
+					<!-- 列表 end -->
+						</div>
+						<!-- 角色成员 end -->
+					</div>
+				</div>
+				<!-- 右侧 end -->
+				<!-- 左侧 begin -->
+				<div class="manage-left-bar">
+					<div class="user-info">
+						<img src="images/login_portrait.png" title="贾爱华" width="38" height="38" class="portrait">
+						<p class="username">贾爱华</p>
+					</div>
+
+					<ul class="manage-nav-list">
+						<li class="j-on-off member">
+							<a href="javascript:;" class="btn open">成员管理</a>
+							<ul class="list">
+								<li><a href="#">客服管理</a></li>
+								<li><a href="#" class="active">角色管理</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!-- 左侧 end -->
+			</div>
+		</div>
+	</div>
+
+	<!-- 添加角色 begin -->
+	<div class="add-role manage-popup" id="j-add-role-popup">
+		<div class="shadow"></div>
+		<div class="content">
+			<span class="close-btn"></span>
+			<p class="title">添加角色</p>
+			<div class="main">
+				<input type="text" placeholder="请输入角色名称" class="inp">
+			</div>
+			<div class="btn"><a href="javascript:;" class="yes">确定</a></div>
+		</div>
+	</div>
+	<!-- 添加角色 end -->
+
+	<!-- 成员组管理tpl begin -->
+	<div class="manage-group manage-popup">
+		<div class="shadow"></div>
+		<div class="content">
+			<span class="close-btn"></span>
+			<p class="title">成员管理</p>
+			<div class="main">
+				<div class="group-box">
+					<div class="left-bar list-block"></div>
+					<div class="center-bar"></div>
+					<div class="right-bar list-block"></div>
+				</div>
+			</div>
+			<div class="btn"><a href="javascript:;" class="yes">确定</a></div>
+		</div>
+	</div>
+	<!-- 成员组管理tpl end -->
+
+	<!-- 确认框tpl begin -->
+	<div class="manage-confirm manage-popup" id="j-manage-confirm"></div>
+
+	<script type="text/html" id="manage-confirm-tpl">
+		<div class="shadow"></div>
+		<div class="content">
+			<span class="close-btn"></span>
+			<p class="title">{{title}}</p>
+			<div class="message"><p>{{message}}</p></div>
+			<div class="btn"><a href="javascript:;" class="yes">确定</a><a href="javascript:;" class="no">取消</a></div>
+		</div>
+	</script>
+	<!-- 确认框tpl end -->
+
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/validate.min.js"></script>
+	<script src="js/template.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/role_manage.js"></script>
+</body>
+</html>

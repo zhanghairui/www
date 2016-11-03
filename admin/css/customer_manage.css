@@ -1,0 +1,54 @@
+@charset "UTF-8";
+/*--客服管理--*/
+
+/*右侧顶部*/
+.top-bar { overflow: hidden; height: 52px; line-height: 52px; border-bottom: 1px solid #E0E4E5; }
+.top-bar .title { height: 100%; margin-left: 20px; }
+.top-bar .btn { padding-left: 12px; margin-right: 20px; background:url(../images/add_icon.png) no-repeat 0; font-size: 12px; color: #00B6F8; }
+.top-bar .search { overflow: hidden; position: relative; width: 200px; height: 30px; line-height: 30px; margin-top: 12px; margin-right: 26px; background-color: #eee; border-radius: 10px; }
+.top-bar .search span,
+.top-bar .search input { position: absolute; top: 0; }
+.top-bar .search span { left: 0; width: 30px; height: 100%; background: url(../images/search_icon.png) no-repeat 16px; cursor: pointer; }
+.top-bar .search input { left: 30px; width: 160px; height: 100%; padding: 0 8px; }
+
+/*右侧列表*/
+.user-list { width: 100%; table-layout: fixed; }
+.user-list thead { border-bottom: 1px solid #EEF0F1; }
+.user-list tbody { font-size: 12px; }
+.user-list tr { height: 55px; }
+.user-list th, 
+.user-list td { overflow: hidden; font-weight: normal; text-align: left; white-space: nowrap;  text-overflow: ellipsis; }
+.user-list .name { width: 13%; padding-left: 20px; }
+.user-list .email { width: 25%; }
+.user-list .phone { width: 20%; }
+.user-list .status { width: 10%; }
+.user-list .num { width: 10%; }
+.user-list .role { width: 13%; }
+.user-list .ctrl { padding-right: 20px; }
+.user-list tbody tr:hover { background-color: #EFF1F5; }
+.user-list .ctrl a,
+.user-list .ctrl a:hover { margin-right: 10px; color: #00B6F8; }
+
+/*右侧滑栏*/
+.side-bar { position: absolute; right: 0; right: -380px; top: 0; width: 370px; height: 100%; background-color: #fff; box-shadow:0px 0px 10px rgba(0, 0, 0, 0.3); }
+.side-bar .top-bar { position: absolute; top: 0; left: 0; width: 100%; height: 52px; background-color: #F5F5F5; text-align: center; }
+.side-bar .close-btn { position: absolute; right: 10px; top: 10px; width: 12px; height: 12px; background: url(../images/close_icon.png) no-repeat; cursor:pointer; }
+.submit-box { position: absolute; bottom: 0; left: 0; width: 100%; height: 72px; background-color: #F5F5F5; }
+.submit-box input { display: block; width: 136px; height: 35px; margin: 20px auto; background-color: #00B6F8; color: #FEFEFE; cursor: pointer; border-radius: 2px; }
+
+.side-cont { overflow-y: auto; position:absolute; top: 52px; bottom: 72px; width: 100%; }
+.form-block { padding: 20px; font-size: 12px; }
+.form-line { overflow: hidden; height: 40px; line-height: 40px; margin-bottom: 10px; }
+.form-line label { float: left; width: 60px; text-align: right; }
+.form-line label span { color: #F2554F; }
+.form-line .inp-box { position:relative; float: right; width: 248px; height: 38px; line-height: 38px; border:1px solid #E8E8E8; border-radius: 1px; }
+.value-box { float: right; width: 248px; height: 38px; line-height: 38px;  }
+.value-box a,
+.value-box a:hover { color: #00B6F8; }
+
+.inp-box input,
+.inp-box .num { position:absolute; top: 0; height: 100%; line-height: 38px; }
+.inp-box input { left: 0; width: 205px; padding-left: 5px; }
+.inp-box .num { right: 5px; color:#999; }
+.form-line .chk { margin-left: 18px; padding-left: 24px; background: url(../images/chk_icon.png) no-repeat 0; cursor: pointer; }
+.form-line .chk.active { background-image: url(../images/chked_icon.png); }

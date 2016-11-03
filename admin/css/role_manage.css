@@ -1,0 +1,48 @@
+@charset "UTF-8";
+/*--角色管理--*/
+
+.list-row { position: relative; height: 100%; padding-left: 214px; }
+.list-left-bar { position: absolute; left: 0; top: 0; width: 213px; padding-bottom: 3000px; margin-bottom: 3000px; border-right: 1px solid #E0E4E5; }
+.list-right-bar {}
+
+/*顶部*/
+.top-bar { overflow: hidden; height: 52px; line-height: 52px; border-bottom: 1px solid #E0E4E5; }
+.top-bar .title { height: 100%; margin-left: 20px; }
+.top-bar .btn { padding-left: 12px; margin-right: 20px; background:url(../images/add_icon.png) no-repeat 0; font-size: 12px; color: #00B6F8; }
+.top-bar .link { margin-left: 20px; font-size: 12px; color: #00B6F8; }
+
+/*角色列表*/
+.role-list {}
+.role-list li { overflow: hidden; height: 40px; line-height: 40px; padding-left: 20px; white-space: nowrap; text-overflow: ellipsis; font-size: 12px; }
+.role-list li:hover a { display: block; }
+.role-list span { float: left; width:114px;  }
+.role-list a { display: none; float: right; margin-right: 10px; color: #00B6F8; }
+
+/*客服列表*/
+.user-list { width: 100%; table-layout: fixed; }
+.user-list thead { border-bottom: 1px solid #EEF0F1; }
+.user-list tbody { font-size: 12px; }
+.user-list tr { height: 55px; }
+.user-list tbody tr:hover { background-color: #EFF1F5; }
+.user-list th, 
+.user-list td { overflow: hidden; font-weight: normal; text-align: left; white-space: nowrap;  text-overflow: ellipsis; }
+.user-list .name { padding-left: 20px; }
+.user-list .accounts { width: 29%; }
+.user-list .num { width: 27%; }
+.user-list .role { width: 16%; }
+
+/*成员组管理*/
+.manage-group { display: -block;/**/ }
+.manage-group .content { width: 668px; height: 544px; margin-left: -334px; margin-top: -272px; }
+.manage-group .main {height:444px; }
+.manage-group .group-box {}
+.manage-group .left-bar {}
+.manage-group .center-bar {}
+.manage-group .center-bar {}
+.manage-group .center-bar {}
+.manage-group .center-bar {}
+
+/*添加角色*/
+.add-role .content { width: 368px; height: 198px; margin-left: -184px; margin-top: -99px; }
+.add-role .main { height: 94px; padding: 0 20px; }
+.add-role .inp { width: 312px; height: 38px; padding: 0 8px; margin-top: 28px; border:1px solid #E8E8E8; border-radius: 2px; }

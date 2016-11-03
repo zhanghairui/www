@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<!--[if lt IE 9]>
+<script src="../js/html5shiv.min.js"></script>
+<script src="../js/respond.min.js"></script>
+<![endif]-->
+<title></title>
+<link href="css/common.css" rel="stylesheet">
+<link href="css/login.css" rel="stylesheet">
+</head>
+<body>
+	<img src="images/logoin_bg.png" class="body-bg">
+	<h1 class="title">用友有信客服系统</h1>
+	<div class="box">
+		<div class="content">
+			<img src="images/login_portrait.png" width="62" height="62" class="portrait" id="j-portrait">
+			<div class="login-form">
+				<input type="text" id="j-username" autocomplete="off" placeholder="请输入账号/手机号/邮箱" >
+				<input type="password" id="j-password" autocomplete="off" placeholder="请输入密码">
+				<p class="error" id="j-error">用户或密码错误！</p>
+				<input type="button" value="登录" class="disabled submit-btn" id="j-submit">
+			</div>
+			<p class="login-links"><a href="#">注册</a><span>|</span><a href="#">忘记密码</a></p>
+		</div>
+	</div>
+	<!-- 弹框 begin -->
+	<div class="login-popup" id="j-company-list"></div>
+	<script type="text/html" id="company-list">
+		<p>请选择企业</p>
+		<ul>
+			{{each datalist as data}}
+			<li><a href="{{data.url}}">{{data.name}}</a></li>
+			{{/each}}
+		</ul>
+	</script>
+	<!-- 弹框 end -->
+
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/validate.min.js"></script>
+	<script src="js/template.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/login.js"></script>
+	
+</body>
+</html>
