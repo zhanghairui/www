@@ -1,0 +1,1 @@
+[{"nickname":"d", "staffId":123123123, "serviceMax":10, "isAdmin":0}, {"nickname":"abc2", "staffId":123123123, "serviceMax":8, "isAdmin":1}]

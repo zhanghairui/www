@@ -1,0 +1,67 @@
+@charset "UTF-8";
+/*--角色管理--*/
+
+/*三列布局*/
+.list-row { position: relative; height: 100%; padding-left: 214px; }
+.list-left-bar { position: absolute; left: 0; top: 0; width: 213px; padding-bottom: 3000px; margin-bottom: 3000px; border-right: 1px solid #E0E4E5; }
+.list-right-bar {}
+
+/*顶部*/
+.top-bar { overflow: hidden; height: 52px; line-height: 52px; border-bottom: 1px solid #E0E4E5; }
+.top-bar .title { height: 100%; margin-left: 20px; }
+.top-bar .btn { padding-left: 12px; margin-right: 20px; background:url(../images/add_icon.png) no-repeat 0; font-size: 12px; color: #00B6F8; }
+.top-bar .link { margin-left: 20px; font-size: 12px; color: #00B6F8; }
+
+/*角色列表*/
+.role-list {}
+.role-list li { overflow: hidden; height: 40px; line-height: 40px; padding-left: 20px; white-space: nowrap; text-overflow: ellipsis; font-size: 12px; cursor: pointer; }
+.role-list li:hover,
+.role-list li.active { background-color: #EFF1F5; }
+.role-list li:hover a { display: block; }
+.role-list span { float: left; width:114px;  }
+.role-list a { display: none; float: right; margin-right: 10px; color: #00B6F8; }
+
+/*客服列表*/
+.user-list { width: 100%; table-layout: fixed; }
+.user-list thead { border-bottom: 1px solid #EEF0F1; }
+.user-list tbody { font-size: 12px; }
+.user-list tr { height: 55px; }
+.user-list tbody tr:hover { background-color: #EFF1F5; }
+.user-list th, 
+.user-list td { overflow: hidden; font-weight: normal; text-align: left; white-space: nowrap;  text-overflow: ellipsis; }
+.user-list .name { padding-left: 20px; }
+.user-list .accounts { width: 29%; }
+.user-list .num { width: 27%; }
+.user-list .role { width: 16%; }
+
+/*成员组管理*/
+.manage-group { display: -block;/**/ }
+.manage-group .content { width: 550px; height: 490px; margin-left: -275px; margin-top: -245px; }
+.manage-group .main {height:387px; }
+.manage-group .group-box { overflow: hidden; padding:10px 20px; }
+.manage-group .list-block { width: 250px; }
+.manage-group .border-title { margin-bottom: 10px; }
+.manage-group .border-box { overflow-y: auto; height: 330px; border:1px solid #E8E8E8; border-radius: 2px; font-size:12px; }
+.manage-group .left-bar { float: left; }
+.manage-group dl { cursor: pointer; }
+.manage-group dt { height: 32px; line-height: 32px; }
+.manage-group dt { padding-left: 25px; background: url(../images/right_icon.png) no-repeat 10px; }
+.manage-group .open { background-image:url(../images/down_icon.png); }
+.manage-group dd { display: none; height: 50px; line-height: 50px;  }
+.manage-group dd:hover { background-color: #EFF1F5; }
+.manage-group .choose-box { overflow:hidden; position: relative; float: left; width: 35px; height: 35px; margin-left:25px; margin-top: 8px; margin-right: 8px; border-radius: 50%; }
+.manage-group .choose-box img { display: block; width: 100%; }
+.manage-group .choose .choose-img { display: block; }
+.manage-group img.choose-img { display: none; position: absolute; top: 0; left: 0; z-index: 1; }
+.manage-group .right-bar { float: right; }
+.manage-group .right-list { overflow:hidden; padding-top: 10px; padding-left: 10px; }
+.manage-group .right-list li { float: left; height: 22px; line-height: 22px; margin-right: 10px; margin-bottom: 10px; padding-left: 18px; padding-right: 5px; background: url(../images/s_close_icon.png) no-repeat 5px; border:1px solid #E8E8E8; cursor: pointer; border-radius: 1px; }
+
+/*添加角色*/
+.add-role .content { width: 368px; height: 198px; margin-left: -184px; margin-top: -99px; }
+.add-role .main { height: 94px; padding: 0 20px; }
+.add-role .inp { width: 312px; height: 38px; padding: 0 8px; margin-top: 28px; border:1px solid #E8E8E8; border-radius: 2px; }
+
+/*加载框*/
+.loading { height: 60px; line-height: 60px; text-align: center; }
+.loading img { height: 20px; margin-right: 10px; vertical-align: middle; }

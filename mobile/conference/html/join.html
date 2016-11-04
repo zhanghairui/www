@@ -6,6 +6,9 @@
 <meta name="screen-orientation" content="portrait">
 <meta name="full-screen" content="no">
 <meta name="format-detection" content="telephone=no, address=no, email=no">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache"> 
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> 
+<META HTTP-EQUIV="Expires" CONTENT="0">
 <script src="../js/mobile.js"></script>
 <link href="../css/base.css" rel="stylesheet">
 <title>加入会议</title>
@@ -16,14 +19,19 @@
             <div class="u-inp">
                 <input type="number" name="cid" placeholder="请输入会议号" id="j-inp">
             </div>
-            <div class="u-inp">test</div>
+            <div class="u-inp" id="j-username">用户名</div>
             <a href="javascript:;" class="u-btn disabled" id="j-btn">加入会议</a>
         </form>
     </div>
     <script src="../js/fastclick.min.js"></script>
     <script src="../js/zepto.min.js"></script>
+    <script src="../js/base.js"></script>
 	<script>
-		FastClick.attach(document.body);
+        /*修改用户信息*/
+        (function (){
+            setMeetingData();
+        })();
+
         /*加入会议按钮*/
         (function (){
             var oInp=$('#j-inp');
@@ -45,7 +53,18 @@
 
             oBtn.click(function (){
                 if ( ! bFlag) return false;
+                var meetingId=$.trim(oInp.get(0).value);
                 // 加入会议
+                connectWebViewJavascriptBridge(function(YonYouJSBridge){
+                    var data=JSON.stringify({
+                        'function':'joinMeeting',
+                        'parameters':{
+                            'meetingId':meetingId
+                        }
+                    });
+                   
+                    YonYouJSBridge.send(data, function(responseData){});
+                });
             });
         })();
 	</script>

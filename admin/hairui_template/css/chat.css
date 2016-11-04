@@ -1,0 +1,99 @@
+@charset "UTF-8";
+/*--聊天--*/
+
+/*左侧导航*/
+.manage-nav-list .chat,
+.manage-nav-list .leave-message,
+.manage-nav-list .history,
+.manage-nav-list .setting { background-position: 10px; background-repeat: no-repeat; }
+.manage-nav-list .chat { background-image: url(../images/chat_icon.png); }
+.manage-nav-list .chat.active { background-image: url(../images/chat_active_icon.png); }
+.manage-nav-list .leave-message { background-image: url(../images/leave_message_icon.png); }
+.manage-nav-list .leave-message.active { background-image: url(../images/leave_message_active_icon.png); }
+.manage-nav-list .history { background-image: url(../images/history_icon.png); }
+.manage-nav-list .history.active { background-image: url(../images/history_active_icon.png); }
+.manage-nav-list .setting { background-image: url(../images/setting_icon.png); }
+.manage-nav-list .setting.active { background-image: url(../images/setting_active_icon.png); }
+.manage-nav-list .active { background-color: #CBE3F7; }
+.manage-nav-list .active a { color: #00B6F8; }
+
+/*三列布局*/
+.list-row { position: relative; height: 100%; padding-left: 214px; }
+.list-left-bar { position: absolute; left: 0; top: 0; width: 213px; padding-bottom: 3000px; margin-bottom: 3000px; border-right: 1px solid #E0E4E5; }
+.list-right-bar {}
+
+/*联系人列表*/
+.customer-list {}
+.customer-list li { overflow:hidden; height: 38px; padding:14px 9px; white-space: nowrap; text-overflow: ellipsis; cursor: pointer; font-size: 12px; }
+.customer-list li:hover { background-color: #f6f8fc; }
+.customer-list .active { background-color: #EFF1F5; }
+.portrait-box { position: relative; float: left; width: 38px; height: 38px; }
+.portrait-box span { position: absolute; top: -2px; right: -6px; height: 14px; line-height: 16px; padding:0 2px; text-align: center; background-color: #F2554F; color: #fff; border-radius: 5px; }
+.info-box { position: relative; float: right; width: 145px; color: #999; }
+.info-box .time { position: absolute; right: 0; top: 2px; }
+.info-box .name { height: 21px; line-height: 21px; font-size: 14px; color: #333; }
+
+/*聊天窗口*/
+.manage-content,
+.manage-right-bar,
+.list-row,
+.list-right-bar { height: 100%; }
+.chat-box { position:relative; height: 100%; }
+.chat-top,
+.chat-main,
+.chat-bottom { position: absolute; width: 100%; }
+.chat-top { overflow:hidden; top: 0; left: 0; height:52px; line-height: 52px; border-bottom: 1px solid #E0E4E5;  }
+.chat-main { overflow-y: auto; top: 53px; bottom: 107px; left: 0; }
+.chat-bottom { bottom: 0; left: 0; height: 106px; border-top: 1px solid #E0E4E5; }
+/*聊天顶部*/
+.chat-top .portrait { width: 38px; height: 38px; margin-left:20px; margin-right: 10px; margin-top: 6px; }
+.chat-top .close-btn,
+.chat-top .customer-btn { width: 16px; height: 18px; margin-top: 16px;  margin-right:20px; background-repeat: no-repeat; background-position: 0; cursor: pointer; }
+.chat-top .close-btn { background-image:url(../images/customer_close_icon.png); }
+.chat-top .close-btn:hover { background-image: url(../images/customer_close_hover_icon.png); }
+.chat-top .customer-btn { background-image: url(../images/customer_info_icon.png); }
+.chat-top .customer-btn:hover { background-image: url(../images/customer_info_hover_icon.png); }
+/*聊天中部*/
+.chat-main { }
+.chat-main .layout { padding:5px 20px; font-size: 12px; }
+.chat-main .portrait { width: 34px; height: 34px; margin-top: 20px; }
+.chat-main .time { height: 20px; line-height: 20px; margin: 10px 0; text-align: center; color: #999; clear: both; }
+.chat-main .name { height: 20px; line-height: 20px; color: #999; }
+.chat-main .message { position: relative; width: 325px; background: -#ccc;/**/ }
+.chat-main .text { line-height: 30px; padding:0 10px; font-size: 14px; border-radius: 3px; }
+.chat-main .tip,
+.chat-main .stip { position: absolute; top: 30px; line-height: 0; border:6px dashed transparent; }
+.chat-main .left-message,
+.chat-main .right-message { width: 100%; }
+.chat-main .left-message { float: left; }
+.left-message .portrait { float: left; }
+.left-message .message { float: left; margin-left: 15px; }
+.left-message .text { float: left; border:1px solid #E0E4E5; }
+.left-message .tip { left: -11px; border-right: 6px solid #E0E4E5; }
+.left-message .stip { left:-10px; border-right: 6px solid #fff; }
+
+.chat-main .right-message { float: right; }
+.right-message .portrait { float: right; }
+.right-message .message { float: right; margin-right: 15px; text-align: right; }
+.right-message .text { float: right; background-color: #00B6F8; color: #fff;text-align: left; }
+.right-message .tip { right: -11px; border-left: 6px solid #00B6F8; }
+
+/*聊天底部*/
+.chat-bottom .layout  { position: relative; height: 100%; padding-right: 80px; }
+.chat-bottom .send { position: absolute; top:0; right: 0; width: 79px; height: 100%; border-left:1px solid #E0E4E5; cursor: pointer; background: url(../images/send_icon.png) no-repeat center; }
+.chat-bottom .send:hover { background-image: url(../images/send_hover_icon.png) }
+.chat-bottom .menu { overflow:hidden; height: 38px; padding-left: 20px;}
+.chat-bottom .btn { float: left; width: 18px; height: 18px; margin-top: 10px; margin-right: 16px; background-repeat: no-repeat; cursor: pointer; }
+.chat-bottom .img-btn { background-image: url(../images/img_icon.png); }
+.chat-bottom .img-btn:hover { background-image: url(../images/img_hover_icon.png); }
+.chat-bottom .at-btn { background-image: url(../images/at_icon.png); }
+.chat-bottom .at-btn:hover {background-image: url(../images/at_hover_icon.png); }
+.chat-bottom .face-btn{background-image: url(../images/face_icon.png);}
+.chat-bottom .face-btn:hover{background-image: url(../images/face_hover_icon.png);}
+.chat-bottom .file-btn{background-image: url(../images/file_icon.png);}
+.chat-bottom .file-btn:hover{background-image: url(../images/file_hover_icon.png);}
+.chat-bottom .pause-btn{background-image: url(../images/pause_icon.png);}
+.chat-bottom .pause-btn:hover {background-image: url(../images/pause_hover_icon.png);}
+/*输入框*/
+.chat-bottom .input { height: 68px; padding-right: 20px; }
+.chat-bottom textarea { width: 100%; height: 100%; padding: 0 10px; resize: none; font-size: 14px; }

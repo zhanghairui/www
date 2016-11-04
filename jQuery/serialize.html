@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <form id="test-form">
+		<input type="text" name="username">
+		<input type="password" name="password">
+    </form>
+	<button>a</button>
+    <div id="div1"></div>
+
+    <script src="jquery-1.7.2.min.js"></script>
+    <script>
+    	$('button').click(function (){
+    		//$('#div1').html($('#test-form').serialize());
+    		var data=JSON.stringify($('#test-form').serialize());
+    		alert(typeof data);
+    		// var data=JSON.stringify($('#test-form').serializeArray());
+    		$('#div1').html(data);
+    		// console.log($('#test-form').serializeArray());
+    	});
+
+    </script>
+</body>
+</html>

@@ -6,6 +6,9 @@
 <meta name="screen-orientation" content="portrait">
 <meta name="full-screen" content="no">
 <meta name="format-detection" content="telephone=no, address=no, email=no">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache"> 
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> 
+<META HTTP-EQUIV="Expires" CONTENT="0">
 <script src="../js/mobile.js"></script>
 <link href="../css/base.css" rel="stylesheet">
 <title>发起会议-设置</title>
@@ -24,21 +27,52 @@
 		<form action="" target="" method="" class="m-form">
 			<div class="u-inp">
 				<span class="tit left">个人会议号</span>
-				<span class="cid right">1834024923</span>
+				<span class="cid right" id="j-meeting-id">1834024923</span>
 			</div>
 			<div class="u-inp">
 				<span class="tit left">允许在支持人之前加入会议</span>
-				<span class="u-open-btn right"><i></i></span>
+				<span class="u-open-btn right" id="j-open"><i></i></span>
 			</div>
 			<div class="u-inp">
 				<span class="tit left">会议密码</span>
-				<input type="password" placeholder="空密码" class="pwd right">
+				<input type="password" placeholder="空密码" class="pwd right" id="j-pwd">
 			</div>
-			<a href="javascript:;" class="u-btn disabled">保存</a>
+			<a href="javascript:;" class="u-btn" id="j-save-btn">保存</a>
 		</form>
 	</div>
 	<script src="../js/zepto.min.js"></script>
+	<script src="../js/fastclick.min.js"></script>
+	<script src="../js/base.js"></script>
 	<script>
+		/*修改用户名、用户头像、会议ID*/
+		setMeetingData();
+
+		/*视频会议设置*/
+		(function (){
+			var oBtn=$('#j-save-btn');
+
+			oBtn.click(function (){
+				var meetingId=localStorage.getItem('meetingId');// 会议ID
+				var meetingId=123123;
+				var allowJoinBefore=$('#j-open').hasClass('open');
+				var pwd=$('#j-pwd').get(0).value;
+				
+				connectWebViewJavascriptBridge(function(YonYouJSBridge){
+					var json={
+						'function':'setMeeting',
+						'parameters':{'meetingId' : meetingId}
+					};
+					if (allowJoinBefore) json.parameters['allowJoinBefore']=true;
+					if (pwd.length > 0) json.parameters['password']=pwd;
+	           		var data=JSON.stringify(json);
+	           		
+					YonYouJSBridge.send(data, function(responseData){
+						window.history.go(-1);
+					});
+	        	});
+			});
+		})();
+
 		/*开关滑块*/
 		(function (){
 			var aBtn=$('.u-open-btn');
@@ -66,7 +100,6 @@
 				});
 			});
 		})();
-
 	</script>
 </body>
 </html>

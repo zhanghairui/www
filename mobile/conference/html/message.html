@@ -6,28 +6,96 @@
 <meta name="screen-orientation" content="portrait">
 <meta name="full-screen" content="no">
 <meta name="format-detection" content="telephone=no, address=no, email=no">
-<script src="../js/mobile.js"></script>
-<link href="../css/base.css" rel="stylesheet">
-<title>发起会议-设置</title>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache"> 
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> 
+<META HTTP-EQUIV="Expires" CONTENT="0">
+<script src="http://im.yyuap.com/upesnlive/conference/js/mobile.js"></script>
+<link href="http://im.yyuap.com/upesnlive/conference//css/base.css" rel="stylesheet">
+<title>消息</title>
 <style>
 .info-box { margin-bottom: 0.95rem; }
 .u-portrait { margin: 0.4rem auto 0.2rem; }
 .user { text-align: center; }
 
 .text { padding: 0 0.3rem; margin-bottom: 0.4rem; color: #8899A6; font-size: 0.3rem; line-height: 1.4; }
+.popup { display: none; position: absolute; left: 0; top: 0; width: 100%; height: 0.8rem; padding: 0.5rem 0; background-color: rgba(0,0,0,0.7); }
+.popup p { color: #fff; text-align: center; line-height: 1.5; }
+.popup .icon { position: absolute; top: 0.27rem; right: 0.3rem; width: 0.67rem; height: 0.69rem; background: url(../images/icon_open.png) no-repeat; background-size: contain; }
+.u-loading { width: 0.32rem; height: 0.32rem; margin: 0.2rem auto; background: url(../images/icon_loading.gif) no-repeat center; background-size: contain; }
 </style>
 </head>
 <body>
-	<div class="m-box">
+	<div class="u-loading" id="j-loading" style="display:none;"></div>
+	<div class="m-box" id="j-content">
 		<div class="info-box">
+			
 			<div class="u-portrait">
-				<img src="http://img1.imgtn.bdimg.com/it/u=1025235992,1781409227&fm=21&gp=0.jpg" title="贾爱华">
+				<!--<img src="http://img1.imgtn.bdimg.com/it/u=1025235992,1781409227&fm=21&gp=0.jpg" id="j-portrait">-->
 			</div>
-			<p class="user">贾爱华的视频会议</p>
+			
+			<p class="user"><span id="j-username"></span>的视频会议</p>
 		</div>
 
-		<p class="text">一、在移动端，请使用企业空间app，打开应用中心， 在视频会议应用中，输入会议号：xxxxxx，加入会议</p>
-		<p class="text">二、在web或pc端，点击下面链接即可轻松加会： https://www.zhumu.com/27348328434</p>
+		<p class="text">一、在移动端，请使用企业空间app，打开应用中心， 在视频会议应用中，输入会议号：<span class="j-meeting-id"></span>，加入会议</p>
+		<a href="javascript:;" class="u-btn" id="j-open-btn">立即入会</a>
+		<p class="text">二、在web或pc端，点击下面链接即可轻松加会： https://www.zhumu.me/j/<span class="j-meeting-id"></span></p>
+
+		<div class="popup" id="j-popup">
+			<p>请点击右上角</p>
+			<p>选择使用系统自带浏览器打开</p>
+			<span class="icon"></span>
+		</div>
 	</div>
+	<script src="http://im.yyuap.com/upesnlive/conference/js/zepto.min.js"></script>
+	<script src="http://im.yyuap.com/upesnlive/conference/js/fastclick.min.js"></script>
+	<script src="http://im.yyuap.com/upesnlive/conference/js/base.js"></script>
+	<script>
+		/*从服务器获取数据*/
+		(function (){
+			var username=decodeURIComponent(getLocation('username'));
+			var meetingId=getLocation('meetingId');
+
+			$('#j-username').html(username);
+			$('.j-meeting-id').html(meetingId);
+		})();
+
+		/*点击按钮弹框*/
+		(function (){
+			var oBtn=$('#j-open-btn');
+			var oDiv=$('#j-popup');
+
+
+			oBtn.click(function (){
+				if (isWeixin())
+				{
+					// 是微信
+					oDiv.show();
+				}
+				else
+				{
+					var meetingId=getLocation('meetingId');
+					var ua=navigator.userAgent.toLowerCase();	
+					if (/iphone|ipad|ipod/.test(ua)) {
+						// iOS
+					    window.open('esn://upesn.com/meeting?id='+meetingId);
+					} else if (/android/.test(ua)) {
+					   window.open('upesn://upesn.com/meeting?id='+meetingId);
+					}
+					
+				}
+				
+			});
+
+			function isWeixin()
+			{  
+				var ua = navigator.userAgent.toLowerCase();  
+				if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+				    return true;  
+				} else {  
+				    return false;  
+				}  
+			}  
+		})();
+	</script>
 </body>
 </html>

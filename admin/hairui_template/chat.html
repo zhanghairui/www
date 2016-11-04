@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<!--[if lt IE 9]>
+<script src="../js/html5shiv.min.js"></script>
+<script src="../js/respond.min.js"></script>
+<![endif]-->
+<title>有信客服</title>
+<link href="css/common.css" rel="stylesheet">
+<link href="css/chat.css" rel="stylesheet">
+</head>
+<body>
+	<div class="manage-box">
+		<!-- 顶部 begin -->
+		<header class="manage-header">
+			<div class="title left">U订货-李宁鞋业</div>
+			<a href="#" class="btn right">切换到管理员模式</a>
+			<!-- 
+				success 成功
+				remind	提醒
+				warning 警告
+				error	错误
+			 -->
+			<p class="manage-msg" id="j-manage-msg">提醒</p>
+		</header>
+		<!-- 顶部 end -->
+
+		<div class="manage-main">
+			<div class="manage-content clearfix">
+				<!-- 右侧 begin -->
+				<div class="manage-right-bar">
+					<div class="list-row">
+						<!-- 联系人列表 begin -->
+						<div class="list-left-bar">
+							<ul class="customer-list">
+								<!-- 循环 begin -->
+								<li class="active">
+									<div class="portrait-box">
+										<img src="images/portrait38.png" class="portrait">
+										<span>1</span>
+									</div>
+									<div class="info-box">
+										<span class="time">2016-11-04</span>
+										<p class="name">赵悦</p>
+										<p class="msg">中午我请你吃饭去吧？...</p>
+									</div>
+								</li>
+								<!-- 循环 end -->
+
+								<!-- 循环 begin -->
+								<li>
+									<div class="portrait-box">
+										<img src="images/portrait38.png" class="portrait">
+										<span>100</span>
+									</div>
+									<div class="info-box">
+										<span class="time">05-30</span>
+										<p class="name">黄斌清</p>
+										<p class="msg">关于设置的问题</p>
+									</div>
+								</li>
+								<!-- 循环 end -->
+
+								<!-- 循环 begin -->
+								<li>
+									<div class="portrait-box">
+										<img src="images/portrait38.png" class="portrait">
+										<span>10</span>
+									</div>
+									<div class="info-box">
+										<span class="time">昨天</span>
+										<p class="name">鲁山</p>
+										<p class="msg">关于设置的问题你那边...</p>
+									</div>
+								</li>
+								<!-- 循环 end -->
+							</ul>
+						</div>
+						<!-- 联系人列表 end -->
+						<div class="list-right-bar">
+							<div class="chat-box">
+								<div class="chat-top">
+									<img src="images/portrait38.png" class="portrait left">
+									<span class="name left">黄斌清</span>
+									<span class="close-btn right"></span>
+									<span class="customer-btn right"></span>
+								</div>
+								<!-- 聊天 begin -->
+								<div class="chat-main">
+									<div class="layout clearfix">
+										<p class="time">下午8:30</p>
+										<!-- 左边的消息 begin -->
+										<div class="left-message">
+											<img src="images/portrait38.png" class="portrait">
+											<div class="message">
+												<span class="tip"></span>
+												<span class="stip"></span>
+												<p class="name">用户名</p>
+												<p class="text">资讯您关于如何介入客服的问题？资讯您关于如何介入客服的问题？资讯您关于如何介入客服的问题？资讯您关于如何介入客服的问题？</p>
+											</div>
+										</div>
+										<!-- 左边的消息 end -->
+										<p class="time">下午8:30</p>
+										<!-- 右边的消息 begin -->
+										<div class="right-message">
+											<img src="images/portrait38.png" class="portrait">
+											<div class="message">
+												<span class="tip"></span>
+												<p class="name">用户名</p>
+												<p class="text">a资讯您关于如何介入客服的问题</p>
+											</div>
+										</div>
+										<!-- 右边的消息 end -->
+									</div>
+								</div>
+								<!-- 聊天 end -->
+								<div class="chat-bottom">
+									<div class="layout">
+										<div class="menu">
+											<span class="img-btn btn"></span>
+											<span class="at-btn btn"></span>
+											<span class="face-btn btn"></span>
+											<span class="file-btn btn"></span>
+											<span class="pause-btn btn"></span>
+										</div>
+										<div class="send"></div>
+										<div class="input">
+											<textarea></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 右侧 end -->
+				<!-- 左侧 begin -->
+				<div class="manage-left-bar">
+					<div class="user-info">
+						<img src="images/login_portrait.png" title="贾爱华" width="38" height="38" class="portrait">
+						<p class="username">贾爱华</p>
+					</div>
+
+					<ul class="manage-nav-list">
+						<li class="chat active"><a href="javascript:;">会话</a></li>
+						<li class="leave-message"><a href="javascript:;">留言</a></li>
+						<li class="history"><a href="javascript:;">历史会话</a></li>
+						<li class="setting"><a href="javascript:;">客服设置</a></li>
+					</ul>
+				</div>
+				<!-- 左侧 end -->
+			</div>
+		</div>
+	</div>
+
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/validate.min.js"></script>
+	<script src="js/template.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/chat.js"></script>
+</body>
+</html>

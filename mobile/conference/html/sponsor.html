@@ -6,6 +6,9 @@
 <meta name="screen-orientation" content="portrait">
 <meta name="full-screen" content="no">
 <meta name="format-detection" content="telephone=no, address=no, email=no">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache"> 
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> 
+<META HTTP-EQUIV="Expires" CONTENT="0">
 <script src="../js/mobile.js"></script>
 <link href="../css/base.css" rel="stylesheet">
 <style>
@@ -21,6 +24,10 @@
 .m-popup { display: none; position: absolute; top: 0; left: 0; bottom: 0; right: 0; background-color:rgba(0, 0, 0, 0.6);  }
 .m-popup nav { position: absolute; bottom: 0; left: 0; width: 100%; background-color: #F0F4F6; }
 .m-popup .u-inp { display: block; border-bottom: 1px solid #E3E4EC; }
+.m-popup .u-inp:active,
+.m-popup .u-inp:hover,
+.m-popup .u-inp:focus,
+.m-popup .u-inp.active { background-color:#d9d9d9;}
 .m-popup .u-inp:last-child { margin-top: 0.2rem; border: none; }
 </style>
 <title>发起会议</title>
@@ -28,33 +35,54 @@
 <body>
 	<div class="m-box">
 		<!-- 测试 -->
-		<br/><br/>
-		<a href="sponsor_setting.html">设置</a><br/>
-		<a href="message.html">消息</a><br/>
-
 		<div class="info-box clearfix">
 			<div class="u-portrait left">
-				<img src="http://img1.imgtn.bdimg.com/it/u=2504895810,4120167449&fm=21&gp=0.jpg" title="贾爱华">
+				<img src="" id="j-portrait">
 			</div>
 			<div class="left">
-				<p class="username">贾爱华</p>
-				<p class="c-id">个人会议号:<span>12345678910</span></p>
+				<p class="username" id="j-username"></p>
+				<p class="c-id">个人会议号:<span id="j-meeting-id">	</span></p>
 			</div>
 		</div>
 		<div class="u-inp add-people" id="j-open-btn"><i></i>邀请参会人</div>
-		<a href="javascript:;" class="u-btn disabled">发起会议</a>
+		<a href="javascript:;" class="u-btn" id="j-launch-meeting">发起会议</a>
 
 		<div class="m-popup" id="j-popup">
 			<nav>
-				<a href="javascript:;" class="u-inp">企业空间邀请</a>
-				<a href="javascript:;" class="u-inp">发送微信邀请</a>
-				<a href="javascript:;" class="u-inp">复制到剪贴板</a>
+				<a href="javascript:;" class="u-inp" id="j-esn-btn">企业空间邀请</a>
+				<a href="javascript:;" class="u-inp" id="j-weixin-btn">发送微信邀请</a>
+				<a href="javascript:;" class="u-inp" id="j-share-btn">复制到剪贴板</a>
 				<a href="javascript:;" class="u-inp" id="j-close-btn">取消</a>
 			</nav>
 		</div>
 	</div>
 	<script src="../js/zepto.min.js"></script>
+	<script src="../js/fastclick.min.js"></script>
+	<script src="../js/base.js"></script>
 	<script>
+		/*修改用户名、用户头像、会议ID*/
+		setMeetingData();
+
+		/*修改右侧按钮*/
+		(function (){
+			connectWebViewJavascriptBridge(function(YonYouJSBridge){
+           		var data=JSON.stringify({
+					'function':'navRightItemList',
+					'parameters':{
+						'type' : '0',
+						'rightTitle':'设置',
+						'title':document.getElementsByTagName('title')[0].innerHTML,
+						'rightValues':[{'key':'blog_1', 'value':'分享'}]
+					}
+				});
+
+				YonYouJSBridge.send(data, function(responseData){});
+				YonYouJSBridge.registerHandler('blog_1', function(data, responseCallback){
+			        window.open('sponsor_setting.html', '_self');
+				});
+        	});
+        })();
+	
 		/*点击弹窗*/
 		(function (){
 			var oOpenBtn=$('#j-open-btn');
@@ -65,6 +93,100 @@
 			});
 			oPopup.click(function (){
 				oPopup.hide();
+			});
+		})();
+
+		/*按钮点击反馈*/
+		$('.m-popup .u-inp').on('touchstart', function(){
+			$(this).addClass('active');
+		}).on('touchend', function(){
+			$(this).removeClass('active');
+		});
+
+		/*企业空间邀请*/
+		(function (){
+			var oBtn=$('#j-esn-btn');
+			var username=localStorage.getItem('meetingUsername');// 用户名
+			var meetingId=localStorage.getItem('meetingId');// 会议ID
+			
+			oBtn.click(function (){
+				connectWebViewJavascriptBridge(function(YonYouJSBridge){
+					var data=JSON.stringify({
+						'function':'inviteMeeting',
+						'parameters':{
+							'meetingId':meetingId,
+							'title':username+'邀请您参加视频会议',
+							'content':'您可以使用企业空间－应用中心－视频会议－输入会议号'+meetingId+'，立即入会',
+							'appId':0
+						}
+					});
+					YonYouJSBridge.send(data, function(responseData){});
+				});
+			});
+		})();
+
+		/*微信邀请*/
+		(function (){
+			var oBtn=$('#j-weixin-btn');
+			var username=localStorage.getItem('meetingUsername');// 用户名
+			// var portrait=localStorage.getItem('meetingPortrait');// 头像
+			var meetingId=localStorage.getItem('meetingId');// 会议ID
+			oBtn.click(function (){
+				connectWebViewJavascriptBridge(function(YonYouJSBridge){
+                    var data=JSON.stringify({
+                        'function':'share',
+                        'parameters':{
+                        	'title':username+'邀请您参加视频会议',
+							'content':'您可以使用企业空间－应用中心－视频会议－输入会议号'+meetingId+'，立即入会',
+                            'url':'http://im.yyuap.com/upesnlive/conference/html/message.html?username='+username+'&meetingId='+meetingId, // 需要网络地址
+                            'imgUrl':'http://im.yyuap.com/upesnlive/conference/images/icon_meeting.png' // 需要网络地址
+                        }
+                    });
+                   
+                    YonYouJSBridge.send(data, function(responseData){});
+                });
+			});
+		})();
+
+		/*复制到剪贴板*/
+		(function (){
+			var oBtn=$('#j-share-btn');
+			var username=localStorage.getItem('meetingUsername');// 用户名
+			// var portrait=localStorage.getItem('meetingPortrait');// 头像
+			var meetingId=localStorage.getItem('meetingId');// 会议ID
+			
+			oBtn.click(function (){
+				connectWebViewJavascriptBridge(function(YonYouJSBridge){
+                    var data=JSON.stringify({
+                        'function':'copyText',
+                        'parameters':{
+                            // 'content':'upesn://upesn.com/meeting?id=135'
+                            // 'content':'esn://upesn.com/meeting?id=135'
+                           	'content': 'http://im.yyuap.com/upesnlive/conference/html/message.html?username='+username+'&meetingId='+meetingId
+                        }
+                    });
+                   
+                    YonYouJSBridge.send(data, function(responseData){});
+                });
+			});
+		})();
+
+		/*发起会议*/
+		(function (){
+			var oBtn=$('#j-launch-meeting');
+			// var bFlag=true;// 半透明效果，还需要改
+			var meetingId=localStorage.getItem('meetingId');// 会议ID
+			oBtn.click(function (){
+				connectWebViewJavascriptBridge(function(YonYouJSBridge){
+                    var data=JSON.stringify({
+                        'function':'launchMeeting',
+                        'parameters':{
+                            'meetingId':meetingId
+                        }
+                    });
+                   
+                    YonYouJSBridge.send(data, function(responseData){});
+                });
 			});
 		})();
 	</script>

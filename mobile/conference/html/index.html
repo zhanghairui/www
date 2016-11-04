@@ -6,6 +6,9 @@
 <meta name="screen-orientation" content="portrait">
 <meta name="full-screen" content="no">
 <meta name="format-detection" content="telephone=no, address=no, email=no">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache"> 
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> 
+<META HTTP-EQUIV="Expires" CONTENT="0">
 <script src="../js/mobile.js"></script>
 <link href="../css/base.css" rel="stylesheet">
 <style>
@@ -15,7 +18,7 @@
 .username { height:0.3rem; margin-bottom:0.23rem; color:#fff; }
 .c-id, .c-id span { color:#D9ECFC; }
 
-.btn-box { float:left; width:3.75rem; padding:0.6rem 1.22rem; box-sizing:border-box; border-bottom:1px solid #E3E4EC; background-color:#fff; }
+.btn-box { float:left; width:3.75rem; padding:0.6rem 1.2rem; box-sizing:border-box; border-bottom:1px solid #E3E4EC; background-color:#fff; }
 .btn-box:active,
 .btn-box:hover,
 .btn-box:focus,
@@ -23,25 +26,28 @@
 .btn-box:first-child { border-right:1px solid #E3E4EC; }
 .btn-box img { display:block; width:1.3rem; height:1.3rem; border-radius:50%; }
 .btn-box .text { display:block; margin-top:0.24rem; }
+
+.u-loading { width: 0.32rem; height: 0.32rem; margin: 0.2rem auto; background: url(../images/icon_loading.gif) no-repeat center; background-size: contain; }
 </style>
 <title>视频会议</title>
 </head>
 <body>
-	<div class="m-box">
+	<div class="u-loading" id="j-loading"></div>
+	<div class="m-box" id="j-content" style="display:none;">
 		<div class="info-box">
 			<div class="u-portrait">
-				<img src="http://img1.imgtn.bdimg.com/it/u=2504895810,4120167449&fm=21&gp=0.jpg" title="贾爱华">
+				<img src="" id="j-portrait">
 			</div>
-			<p class="username">贾爱华</p>
-			<p class="c-id">个人会议号:<span>12345678910</span></p>
+			<p class="username" id="j-username"></p>
+			<p class="c-id">个人会议号:<span id="j-meeting-id"></span></p>
 		</div>
 		
 		<div class="enter-box clearfix">
 			<a href="join.html" class="join btn-box">
 				<img src="../images/icon_join.png" title="加入会议">
-				<span href="" class="text">加入会议</span>
+				<span class="text">加入会议</span>
 			</a>
-			<a href="sponsor.html" class="sponsor btn-box">
+			<a href="sponsor.html?v=1" class="sponsor btn-box">
 				<img src="../images/icon_sponsor.png" title="发起会议">
 				<span class="text">发起会议</span>
 			</a>
@@ -49,8 +55,55 @@
 	</div>
 	<script src="../js/zepto.min.js"></script>
 	<script src="../js/fastclick.min.js"></script>
+	<script src="../js/base.js"></script>
 	<script>
-		FastClick.attach(document.body);
+		/*会议授权认证*/
+		function authMeeting(email, type)
+		{
+			connectWebViewJavascriptBridge(function(YonYouJSBridge){
+				var data=JSON.stringify({
+					'function':'authMeeting',
+					'parameters':{
+						'loginAccount':email, // 会议用户（邮箱）
+						'accountType':type
+					}
+				});
+				YonYouJSBridge.send(data, function(responseData){});
+			});
+		}
+			
+
+		/*请求后台接口*/
+		(function (){
+			var oContent=$('#j-content');
+			var oLoading=$('#j-loading');
+			var code=getLocation('code');
+			var qzId=getLocation('qzId');
+			$.ajax({
+				type:'get',
+				url:'/upesnlive/rest/mobileclient/personalmeeting',
+				// url:'http://live.upesn.com/upesnlive/upesnlive/rest/mobileclient/personalmeeting',
+				data:{code:code, qzId:qzId},
+				timeout:5000,
+				success:function (data){
+					var res=JSON.parse(data).result;
+
+					localStorage.setItem('meetingUsername', res.name);// 用户名
+					localStorage.setItem('meetingPortrait', res.avatar);// 头像
+					localStorage.setItem('meetingId', res.personalMeetingNo);// 会议ID
+					setMeetingData();
+					authMeeting(res.userName, res.accountType)
+					oLoading.hide();
+					oContent.show();
+				},
+				error:function (xhr){
+					var res=JSON.parse(xhr.responseText);
+					alert(res.msg);
+				}
+			});
+		})();
+		
+		/*按钮反馈*/
 		$('.btn-box').on('touchstart', function(){
 			$(this).addClass('active');
 		});
