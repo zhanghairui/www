@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>ES6 - 箭头函数</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+	<script>
+		var arr=[3, 2, 5, 1, 0];
+
+		/*
+		es5
+		arr.sort(function (n1, n2){
+			return n1-n2;
+		});
+		*/
+
+		/*
+		es6 
+		在箭头函数中，对于单个参数，括号()可选的，但当你超过一个参数的时候你就需要他们。
+
+		箭头函数只有一句话时，会自动return。如果超过一句话，想返回必须加 return
+		arr.sort((n1, n2) => n2-n1);
+		*/
+
+		alert(arr);
+	</script>
+</body>
+</html>

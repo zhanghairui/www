@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>ES6 - 块作用域</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+	<script>
+		/*
+		es5
+		function show()
+		{
+			var a=1;
+			{
+				var a=2;
+				{
+					var a=3;
+				}
+			}
+
+			return a;
+		}
+		*/
+
+		function show()
+		{
+			let a=1;
+			{
+				let a=2;
+				{
+					let a=3;
+				}
+			}
+
+			return a;
+		}
+
+		alert(show());
+	</script>
+</body>
+</html>
