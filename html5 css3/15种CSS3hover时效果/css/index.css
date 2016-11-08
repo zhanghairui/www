@@ -1,0 +1,92 @@
+@charset "utf-8";
+
+* { margin: 0; padding: 0; box-sizing:border-box; }
+i,
+b { font-style: normal; }
+
+.grid { overflow: hidden; }
+figure { overflow:hidden; position: relative; float: left; width: 33.333%; height:400px; background-color: #3085a3; }
+figure img { display: block; height: 100%; }
+figcaption { position: absolute; left: 0; top: 0; width: 100%; height: 100%; padding: 2em; color: #fff; font-size: 20px; }
+figcaption a { position: absolute; top: 0; left: 0; z-index: 1; width: 100%; height: 100%; text-indent: 200%; font-size: 0; color: #4f7f90; text-decoration: none; outline: none; }
+
+/*第一种*/
+.type1 img { width: calc(100% + 50px); opacity: 0.7; transform: translate3d(-40px, 0, 0); transition: opacity 0.35s, transform 0.35s; }
+.type1:hover img { transform: translate3d(0, 0, 0); opacity: 1; }
+.type1 figcaption { top: auto; bottom: 0; height: 50%; }
+.type1 h2,
+.type1 p { transform: translate3d(0, 40px, 0); }
+.type1 h2 { transition: transform 0.35s; }
+.type1:hover h2 { transform: translate3d(0, 0, 0); }
+.type1 p { color: rgba(255, 255, 255, 0.6); opacity: 0; transition: opacity 0.2s, transform 0.35s; }
+.type1:hover p { opacity: 1; transform: translate3d(0, 0, 0); transition-delay: 0.05s; transition-duration: 0.35s; }
+
+/*第二种*/
+.type2 { text-align: center; }
+.type2 img {}
+.type2 figcaption:before { position: absolute; top: 0; left: 0; width: 100%; height: 100%; content: '';
+    background: -webkit-linear-gradient(top, rgba(72,76,97,0) 0%, rgba(72,76,97,0.8) 75%);
+	opacity: 0; transform: translate3d(0, 50%, 0);
+	transition: opacity 0.35s, transform 0.35s;
+}
+.type2:hover figcaption:before { opacity: 1; transform: translate3d(0, 0, 0); }
+.type2 h2 { position: absolute; top: 50%; left: 0; width: 100%; color: #484c61;
+	transform: translate3d(0, -50%, 0);
+	transition:opacity 0.35s, transform 0.35s;
+}
+.type2:hover h2 { color: #fff; transform: translate3d(0, -50%, 0) translate3d(0, -40px, 0); }
+.type2 p { position: absolute; bottom: 0; left: 0; width: 100%; padding: 2em;
+	opacity:0; transform: translate3d(0, 10px, 0);
+	transition: opacity 0.35s, transform 0.35s;
+}
+.type2:hover p { opacity: 1; transform: translate3d(0, 0, 0); }
+
+/*第三种*/
+.type3 { background-color: #4a3753; }
+.type3 img { opacity: 0.9; transition: opacity 0.35s; }
+.type3:hover img { opacity: 0.5; }
+.type3 figcaption:before { position: absolute; bottom: 0; left: 0; width: 100%; height: 10px; background-color: #fff; content: '';
+	transform: translate3d(0, 10px, 0);
+	transition: transform 0.35s;
+}
+.type3:hover figcaption:before { transform: translate3d(0, 0, 0); }
+.type3 h2 { position: absolute; bottom: 0; left: 0; width: 100%; padding: 1em 1.5em;
+	transform: translate3d(0, -30px, 0);
+	transition: transform 0.35s;
+}
+.type3 h2 i { opacity: 0; transition:opacity 0.35s; }
+.type3:hover h2 { transform: translate3d(0, 0, 0); }
+.type3:hover h2 i { opacity: 1; }
+
+
+/*第四种*/
+.type4 { background-color: #18a367; text-align: center; }
+.type4 img { width: 100%; height: calc(100% + 40px);
+	transform: translate3d(0,-30px,0);
+	transition: transform 0.35s, opacity 0.35s;
+}
+.type4:hover img { transform: translate3d(0, 0, 0); opacity: 0.7; transition-delay: 0.15s; }
+.type4 figcaption { position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 3em; }
+.type4 figcaption:before,
+.type4 figcaption:after { position: absolute; content: ''; opacity: 0; transition: opacity 0.35s, transform 0.35s; }
+.type4 figcaption:before { top: 50px; bottom: 50px; right: 30px; left: 30px; border-top: 1px solid #fff; border-bottom: 1px solid #fff;
+	transform:scale(0, 1);
+}
+.type4 figcaption:after { top: 30px; bottom: 30px; right: 50px; left: 50px; border-right: 1px solid #fff; border-left: 1px solid #fff;
+	transform: scale(1, 0);
+}
+.type4:hover figcaption:before { opacity: 1; transform: scale(1, 1); }
+.type4:hover figcaption:after { opacity: 1; transform: scale(1, 1); }
+
+/*
+	transition-delay 运动前等待事件
+	transition-duration 运动持续时间
+	translate3d(x, y, z)
+	linear-gradient()
+
+				-50% 开始                          -40px 距离
+	transform: translate3d(0, -50%, 0) translate3d(0, -40px, 0);
+
+	backface-visibility:hidden; 当元素不面向屏幕时是否可见（旋转到背面后是否可见）
+	pointer-events:none; 元素永远不会成为鼠标事件的target。
+*/
