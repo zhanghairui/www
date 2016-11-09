@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+.box { width:300px; margin:50px auto; }
+input { height:40px; font-size:16px; outline:none; }
+#t1 { padding-left:10px; }
+#div1 { height:40px; line-height:40px; font-size:20px; text-align:center; color:red; }
+</style>
+<script>
+window.onload=function (){
+	var oT=document.getElementById('t1');
+	var oBtn=document.getElementById('btn');
+	var oDiv=document.getElementById('div1');
+	
+	oT.focus();
+	
+	oBtn.onclick=function (){
+		var n=parseInt(oT.value);
+		
+		var d=Math.floor(n/86400);
+		n%=86400;
+		var h=Math.floor(n/3600);
+		n%=3600;
+		var m=Math.floor(n/60);
+		n%=60;
+		var s=n;
+	
+		oDiv.innerHTML=toDub(d)+'天'+toDub(h)+'小时'+toDub(m)+'分钟'+toDub(s)+'秒';
+	};
+	
+	function toDub(n)
+	{
+		return n<10 ? '0'+n : ''+n;
+	}
+};
+</script>
+</head>
+
+<body>
+	<div class="box">
+		<input type="text" value="0" id="t1" /> 秒
+		<input type="button" value="转换" id="btn" />
+		<div id="div1">00天00小时00分钟00秒</div>
+	</div>
+</body>
+</html>

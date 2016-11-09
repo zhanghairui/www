@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0">
+<title>张海瑞 - zhanghairui.com</title>
+<script>
+document.querySelector('html').style.fontSize=document.documentElement.clientWidth/10+'px';
+</script>
+<style>
+* { margin: 0; padding: 0; }
+div { overflow:hidden; width: 100%; }
+section { overflow:hidden; width: 40rem; transition: 0.3s; }
+a { float: left; -webkit-tap-heightlight-color:rgba(0,0,0,0); }
+img { width: 10rem; border: none; }
+
+p { width: 100%; text-align: center; }
+span { display:inline-block; width: 0.2rem; height: 0.2rem; border: 1px solid #000; border-radius: 0.2rem; }
+.active { background-color: #f60; }
+</style>
+</head>
+<body>
+	<div>
+		<section>
+			<a href="http://taobao.com"><img src="1.jpg" alt=""></a>
+			<a href="http://jd.com"><img src="2.jpg" alt=""></a>
+			<a href="http://baidu.com"><img src="3.jpg" alt=""></a>
+			<a href="http://qq.com"><img src="4.jpg" alt=""></a>
+		</section>
+	</div>
+	<p>
+		<span class="active"></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</p>
+	<script>
+		var oSection=document.querySelector('section');
+		var aBtn=document.querySelectorAll('p span');
+		var left=0;
+		var now=0;
+		// 取消默认事件，的确页面不跟着晃动了，但是滑动的效果还是很不舒服。怎么能做到淘宝的功能呢？
+		document.addEventListener('touchmove', function (ev){
+			ev.preventDefault();
+		}, false);
+
+		oSection.addEventListener('touchstart', function (ev){
+			var start=ev.changedTouches[0].pageX;
+			var currentLeft=left;
+
+			oSection.addEventListener('touchmove', move, false);
+			oSection.addEventListener('touchend', end, false);
+
+			function move(ev)
+			{
+				var disX=ev.changedTouches[0].pageX-start;
+				left=currentLeft+disX;
+
+				oSection.style.WebkitTransform='translateX('+left+'px)';
+
+				return false;
+			}
+
+			function end()
+			{
+				var scale=-left/document.documentElement.clientWidth;
+				now=scale%1<0.1 ? Math.floor(scale) : Math.ceil(scale);
+				(now<0) && (now=0);
+				(now>3) && (now=3);
+				left=-now*document.documentElement.clientWidth;
+				oSection.style.WebkitTransform='translateX('+left+'px)';
+				for (var i=0; i<aBtn.length; i++)
+				{
+					aBtn[i].classList.remove('active');
+				}
+				aBtn[now].classList.add('active');
+
+				document.removeEventListener('touchmove', move, false);
+				document.removeEventListener('touchmove', end, false);
+			}
+		}, false);
+	</script>
+</body>
+</html>

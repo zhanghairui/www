@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>张海瑞 - zhanghairui.com</title>
+<style>
+* { margin: 0; padding: 0; }
+.box { display: -webkit-flex; width: 900px; }
+.box div { width: 200px; height: 200px; line-height: 200px; font-size: 50px; color: #fff; text-align: center; flex-grow: 1; }
+.box div:nth-child(1) { background-color: #ccc; }
+.box div:nth-child(2) { background-color: blue; }
+.box div:nth-child(3) { background-color: green; }
+.box div:nth-child(4) { background-color: red; }
+/*
+	我觉得flex-grow，不写默认值是0
+	剩余宽度 900-200*4=100
+	1 200+100/7*1=215 14.28
+	2 200+100/7*1=215 14.28
+	3 200+100/7*1=215 14.28
+	4 200+100/7*4=	257
+
+*/
+.box div:nth-child(4) {
+	flex-grow: 4;
+}
+
+</style>
+</head>
+<body>
+    <div class="box">
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+    </div>
+</body>
+</html>

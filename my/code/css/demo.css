@@ -1,0 +1,38 @@
+@charset "utf-8";
+/*版权 北京智能社©, 保留所有权利*/
+
+body { border-top:5px solid #0098ca; }
+.box { min-width:768px; min-height:500px; padding-left:230px;
+	/*padding-left:190px;*/
+}
+
+/*--头部--*/
+header { height:30px; line-height:30px; padding:10px; }
+header h1 { font-size:14px; white-space:nowrap; }
+
+/*--内容--*/
+.wrap { padding-left:10px; }
+.wrap .col { overflow:hidden; float:left; width:255px; margin-right:10px; white-space:nowrap; text-overflow:ellipsis; }
+.eg-box { margin-bottom:10px; }
+.eg-box:hover { background:#f0f6fe; }
+.eg-box h3 { padding:2px 5px; background-color:#0098ca; color:#fff; }
+.eg-box a { color:#0098ca; }
+.eg-box a:hover { background:#0098ca; color:#fff; }
+.eg-box a:visited { color:#999; }
+.eg-box ul, .eg-box dt { padding-left:15px; }
+.eg-box dd { padding-left:30px; }
+.eg-box li, .eg-box dt, .eg-box dd { height:30px; line-height:28px; }
+
+/*----侧边栏----*/
+aside { position:fixed; top:0; left:0; width:230px; height:100%; background:#0098ca;
+	/*width:190px;*/
+}
+.search-box { padding:20px; }
+.search-box input { display:block; height: 26px; padding:2px 10px; border: none; background:#fff; border-radius:5px;
+	/*width:130px;*/
+}
+.navigation { overflow:hidden; padding:0 20px; }
+.navigation li { margin:20px 0; }
+.navigation a { display:block; height:35px; line-height:35px; padding-left:45px; color:#fdfefc; font-weight:bold; border:1px solid #fdfefc; border-radius:5px;	border:none;}
+.navigation a:hover,
+.navigation .active { background-color:#98ccfe; }

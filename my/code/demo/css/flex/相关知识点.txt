@@ -1,0 +1,70 @@
+
+2009年，W3C提出 Flex 布局。已经得到了所有浏览器的支持
+
+Flex是Flexible Box的缩写，意为"弹性布局"，用来为盒状模型提供最大的灵活性。
+
+设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。
+
+容器有的样式
+	display:flex;
+
+	flex-direction
+		row（默认值）：主轴为水平方向，起点在左端。
+		row-reverse: 主轴为水平方向，起点在右端。(有点右浮动的意思)
+		column:主轴为垂直方向，起点在上沿。
+		column-reverse: 主轴为垂直方向，起点在下沿
+
+	flex-wrap
+		nowrap（默认）：不换行 （每个div设置的宽度如果超过父级，宽度就失效了，子级的宽度为父级的宽度平分后的值）
+		wrap：换行 第一行在上方。
+		wrap-reverse 换行 第一行在下方。
+
+	flex-flow
+		flex-flow是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。
+
+	justify-content
+		flex-start（默认值）：左对齐
+		flex-end：右对齐  与 flex-direction 的区别 是不改变顺序
+		center： 居中
+		space-between：两端对齐，项目之间的间隔都相等。
+		space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。
+
+
+项目有的样式
+	order
+		默认 0
+		值越小，排列越靠前
+		（有了order岂不是可以想按照什么顺序排列就按照什么顺序排列了）
+
+	flex-grow
+		flex-grow 利用剩余尺寸放大。
+		默认值0，不利用剩余尺寸放大
+
+	flex-shrink
+		按比例缩小
+		默认值 1
+		如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，第一个不缩小。
+
+	flex
+		flex属性是flex-grow, flex-shrink 和 flex-basis的简写
+		默认值为    0         1              auto。后两个属性可选。
+
+
+
+觉得没有用
+	容器有的样式
+		align-items属性它可能取5个值。具体的对齐方式与交叉轴的方向有关，下面假设交叉轴从上到下。
+			flex-start：交叉轴的起点对齐。
+			flex-end：交叉轴的终点对齐。
+			center：交叉轴的中点对齐。
+			baseline: 项目的第一行文字的基线对齐。
+			stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。
+	
+	项目有的样式
+		flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。
+
+		 align-self属性
+			align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。
+
+总结：
+	1. flex-wrap的默认值为nowrap，这样子级设置的宽度会无效。也就是说子级一般不用设置值。

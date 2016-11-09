@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="张海瑞 - zhanghairui.com">
+<title>张海瑞 - zhanghairui.com</title>
+<link href="css/jquery.fullPage.css" rel="stylesheet" />
+<link href="css/base.css" rel="stylesheet" />
+<link href="css/index.css" rel="stylesheet" />
+</head>
+
+<body>
+	<div id="container">
+		<!--第一屏 begin-->
+		<div class="section home">
+			<img src="images/index_page.png" alt="" title="" width="1024" height="768" />
+			<div class="box">
+				<p class="name">张海瑞</p>
+				<p class="profession">程序猴 / 讲师</p>
+			</div>
+		</div>
+		<!--第一屏 end-->
+		
+		<!--第二屏 begin-->
+		<div class="section">
+			<div class="options">
+				<div class="header">
+					<h2>地表最强代码</h2>
+					<span>生命不止，战斗不息</span>
+				</div>
+				<div class="row">
+					<div class="col">
+						<div class="thumbnail">
+							<a href="#" title="">
+								<img src="images/code.png" width="300" height="150" alt="" />
+							</a>
+							<h3>
+								<a href="#" title="">代码案例</a>
+							</h3>
+							<p>丰富的 HTML / CSS / JavaScript / jQuery / AngularJs…… 案例</p>
+						</div>
+					</div>
+					
+					<div class="col">
+						<div class="thumbnail">
+							<a href="#" title="">
+								<img src="images/document.png" width="300" height="150" alt="" />
+							</a>
+							<h3>
+								<a href="#" title="">文档总结</a>
+							</h3>
+							<p>日常工作学习中踩过的坑、小技巧、犯过的错……</p>
+						</div>
+					</div>
+					
+					<div class="col">
+						<div class="thumbnail">
+							<a href="#" title="">
+								<img src="images/video.png" width="300" height="150" alt="" />
+							</a>
+							<h3>
+								<a href="#" title="">视频教程</a>
+							</h3>
+							<p>近几年讲过的课，陆陆续续地免费分享给大家</p>
+						</div>
+					</div>
+				</div>
+				<p class="copyright">
+					<a href="#">京公网安备0002000001号</a>
+					<br />
+					<a href="#">联系方式</a>
+				</p>
+			</div>
+		</div>
+		<!--第二屏 end-->
+	</div>
+	
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/jquery.fullPage.min.js"></script>
+	<script src="js/index.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

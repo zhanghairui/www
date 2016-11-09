@@ -1,0 +1,43 @@
+/*
+智能社© - http://www.zhinengshe.com/
+
+微博：@北京智能社
+微信：zhi_neng_she
+
+最具深度的前端开发培训机构 HTML+CSS/JS/HTML5
+*/
+
+
+@charset "utf-8";
+/* CSS Document */
+
+* { padding: 0; margin: 0; }
+li { list-style: none; }
+body { background: #eaeae4; }
+
+.prompt { width: 710px; height: 301px; background: url(images/bg.gif); margin: 50px auto 0; position: relative; }
+
+.prompt ul { position: absolute; top: 241px; }
+
+.prompt .list1 { left: 30px; }
+.prompt .list2 { right: 30px; }
+
+.prompt li { float: left; width: 103px; height: 30px; line-height: 30px; text-align: center; margin-right: 1px; background: url(images/li_bg.gif) repeat-x; position: relative; cursor: pointer; }
+.prompt h2 { color: #fff; font-size: 14px; }
+.prompt p { width: 128px; height: 100px; padding: 10px; background: url(images/p_bg.gif) no-repeat; filter: alpha(opacity=80); opacity: 0.8; position: absolute; bottom: 28px; left: -24px; display: none; color: #fff; font-size: 12px; text-align: left; line-height: 16px; font-family: arial; }
+.prompt .active { background: url(images/active.gif) no-repeat; font-weight: bold; }
+.prompt .active p { display:block; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

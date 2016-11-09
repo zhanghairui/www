@@ -1,0 +1,43 @@
+@charset "utf-8";
+/*----重置----*/
+blockquote,
+body,
+button,
+dd,
+dl,
+dt,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+input,
+legend,
+li,
+ol,
+p,
+pre,
+td,
+textarea,
+th,
+ul { margin: 0; padding: 0 }
+body { overflow-x: hidden; background:#fff; }
+li { list-style: none; }
+a { text-decoration: none; }
+a:active { background:none; }
+a img { display: block; border: none; }
+input:focus { outline: 0 none transparent; }
+input::-ms-clear { display:none; }
+input, textarea { background:none; border:none; }
+table { border-collapse: collapse; border-spacing: 0; }
+
+/*----公共样式----*/
+body { font-size:14px; font-family: \5FAE\8F6F\96C5\9ED1; }
+body, h1, h2, h3, input { font-size:14px; font-weight:normal; }
+.clearfix:after { display: block; height: 0; content: "."; clear: both; visibility: hidden; }
+.left { float: left; }
+.right { float: right; }

@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>禁止复制 粘贴 By 智能社 - www.zhinengshe.com</title>
+<style>
+* { margin:0; padding:0; }
+input { display:block; width:400px; height:30px; margin:50px auto; font-size:16px; outline:none; }
+.box { margin:20px; padding:20px; border:1px dashed red; line-height:1.8em; }
+.ad { position:fixed; bottom:20px; left:0; width:100%; text-align:center; font-size:20px; }
+</style>
+<script>
+window.onload=function (){
+	// 禁止复制
+	var oT1=document.getElementById('t1');
+	oT1.onkeydown=function (ev){
+		var oEvent=ev || event;
+		
+		if (oEvent.keyCode==67 && oEvent.ctrlKey)
+		{
+			// ctrl + c
+			return false;
+		}
+	};
+	
+	// 禁止粘贴
+	var oT2=document.getElementById('t2');
+	oT2.onkeydown=function (ev){
+		var oEvent=ev || event;
+		
+		if (oEvent.keyCode==86 && oEvent.ctrlKey)
+		{
+			// ctrl + v
+			return false;
+		}
+	};
+};
+</script>
+</head>
+
+<body>
+	<input type="text" id="t1" value="此框禁止复制" />
+	<input type="text" id="t2" value="此框禁止粘贴" />
+	<div class="box">
+		<h3>知识点：</h3>
+		<p>· return false 可以阻止默认事件</p>
+		<p>· event.keyCode 可以获取到用户当前按键</p>
+	</div>
+	<p class="ad">智能社 - www.zhinengshe.com</p>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

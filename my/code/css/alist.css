@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+/*----分类列表----*/
+.class-list { padding: 0.5rem 0; font-size: 0.5rem; }
+.class-list span { color: #06C; }
+.class-list a { color: #06C; padding-bottom:2px; margin: 0 0.4rem; }
+.class-list a:hover,
+.class-list .active { border-bottom: 1px solid #06C; }
+
+/*----标题列表----*/
+.text-box { padding:0.5rem 0; border-top: 1px solid #eee; }
+.text-box h2 { font-size:0.5rem; }
+.text-summarize { text-indent: 2em; word-break: break-word; color: #666; }

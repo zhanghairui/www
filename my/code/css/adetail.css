@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+/*左边*/
+.left-bar { float: left; width: 75%; }
+.cont-box { padding:0 0.5rem; }
+.cont-box h2 { font-size: 0.5rem; }
+
+/*右边*/
+.right-bar { float: right; width: 25%; }
+.right-box { margin-bottom: 0.5rem; }
+.right-box .title { margin-bottom: 0.2rem; font-size: 0.4rem; color: #06c; }
+
+.class-list>a { display: inline-block; margin: 6px 2px; padding: 2px 4px; border: 1px solid #eee; border-radius: 4px; }
+.class-list>a:hover { background-color: #06c; color: #fff; border-color: #06c; }
+
+.recommend li { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }

@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>快速划过没反应 By 智能社 - www.zhinengshe.com</title>
+<style>
+* { margin:0; padding:0; }
+body { font:12px/1.5 tahoma,arial,'Hiragino Sans GB',\5b8b\4f53,sans-serif; }
+li { list-style:none; }
+a { text-decoration:none; }
+.box { overflow:hidden; width:288px; height:98px; border:1px solid #eee; margin:50px auto; }
+.btn-box { position:relative; height:27px; background:#f7f7f7; }
+.btn-box ul { overflow:hidden; position:absolute; left:-1px; top:0; width:290px; }
+.btn-box li { float:left; height:26px; line-height:26px; padding:0 1px; width:56px; text-align:center; border-bottom:1px solid #eee; }
+.btn-box .active { border-left:1px solid #eee; border-right:1px solid #eee; border-bottom-color:#fff; padding:0; background:#fff; font-weight:bold; }
+.btn-box a { color:#3c3c3c; }
+.btn-box .active a { color:#f40; }
+
+.cont-box div { display:none; height:70px; line-height:70px; text-align:center; }
+.cont-box .active { display:block; }
+.ad { position:fixed; bottom:20px; left:0; width:100%; text-align:center; font-size:20px; }
+</style>
+<script>
+window.onload=function (){
+	var aBtn=document.querySelectorAll('.btn-box li');
+	var aCont=document.querySelectorAll('.cont-box div');
+	
+	for (var i=0; i<aBtn.length; i++)
+	{
+		(function (index){
+			var timer=null;
+			aBtn[i].onmouseover=function (){
+				timer=setTimeout(function (){
+					for (var i=0; i<aBtn.length; i++)
+					{
+						aBtn[i].className='';
+						aCont[i].className='';
+					}
+					aBtn[index].className='active';
+					aCont[index].className='active';
+				}, 100);
+			};
+			
+			aBtn[i].onmouseout=function (){
+				clearTimeout(timer);
+			};
+		})(i);
+	}
+};
+</script>
+</head>
+
+<body>
+	<div class="box">
+		<div class="btn-box">
+			<ul>
+				<li class="active"><a href="#">公告</a></li>
+				<li><a href="#">规则</a></li>
+				<li><a href="#">论坛</a></li>
+				<li><a href="#">安全</a></li>
+				<li><a href="#">公益</a></li>
+			</ul>
+		</div>
+		<div class="cont-box">
+			<div class="active">
+				公告文字
+			</div>
+			<div>
+				规则文字
+			</div>
+			<div>
+				论坛文字
+			</div>
+			<div>
+				安全文字
+			</div>
+			<div>
+				公益文字
+			</div>
+		</div>
+	</div>
+	<p class="ad">智能社 - www.zhinengshe.com</p>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

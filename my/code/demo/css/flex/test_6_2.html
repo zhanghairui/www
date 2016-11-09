@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>张海瑞 - zhanghairui.com</title>
+<style>
+* { margin: 0; padding: 0; }
+.box { display: -webkit-flex; width: 800px; }
+.box div { width: 100px; height: 200px; line-height: 200px; font-size: 50px; color: #fff; text-align: center; flex-grow: 1; }
+.box div:nth-child(1) { background-color: #ccc; }
+.box div:nth-child(2) { background-color: blue; }
+.box div:nth-child(3) { background-color: green; }
+.box div:nth-child(4) { background-color: red; }
+/*
+	flex-grow 利用剩余尺寸放大
+	剩余宽度 800-100*4=400
+	1 100+400/
+
+*/
+.box div:nth-child(4) {
+	flex-grow: 2;
+}
+
+</style>
+</head>
+<body>
+    <div class="box">
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+    </div>
+</body>
+</html>

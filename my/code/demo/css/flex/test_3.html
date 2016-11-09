@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>张海瑞 - zhanghairui.com</title>
+<style>
+* { margin: 0; padding: 0; }
+.box { display: -webkit-flex;/*webkit 内核必须加*/
+	flex-flow:column nowrap;
+	/*flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。*/
+}
+.box div { width: 1000px; height: 200px; line-height: 200px; font-size: 50px; color: #fff; text-align: center; }
+.box div:nth-child(1) { background-color: #ccc; }
+.box div:nth-child(2) { background-color: blue; }
+.box div:nth-child(3) { background-color: green; }
+</style>
+</head>
+<body>
+    <div class="box">
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+    </div>
+</body>
+</html>
