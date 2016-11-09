@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>on</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+	<input type="text" autocomplete="none">
+	<ul></ul>
+
+    <script src="../jquery-3.0.0.js"></script>
+    <script>
+    	var oInp=$('input');
+    	var oUl=$('ul');
+
+    	oUl.on('click', 'a', function (){
+			alert('a');
+		});
+
+    	oInp.on('keydown', function (ev){
+    		if (ev.keyCode == 13)
+    		{
+    			$('<li>'+oInp.val()+'<a href="javascript:;">删除</a></li>').appendTo(oUl);
+    			oInp.val('');
+    		}
+    	});
+    	// on 是不是事件委托？
+    </script>
+</body>
+</html>

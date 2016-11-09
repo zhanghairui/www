@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>on</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+	<button>测试</button>
+    
+    <script src="../jquery-1.7.2.min.js"></script>
+    <script>
+    	// one 只能执行一次
+    	var oBtn=$('button');
+
+    	oBtn.on('click', function (){
+    		alert('a');
+    	});
+
+    	oBtn.on('mouseover', function (){
+    		alert('b');
+    	});
+
+    	oBtn.on('mouseover', function (){
+    		alert('c');
+    	});
+
+    	oBtn.off('mouseover');
+    </script>
+</body>
+</html>
