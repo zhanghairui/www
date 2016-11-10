@@ -24,8 +24,8 @@ hairui.index.showHideHeader=function (){
 		function moveHeader(target)
 		{
 			oHeader.stop().animate(target, {
-				'duration':200,
-				'easing':'easeInOutBounce'
+				'duration':40
+				//'easing':'easeInOutBounce'
 			});
 		}
 	});

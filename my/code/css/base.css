@@ -38,16 +38,16 @@ table { border-collapse: collapse; border-spacing: 0; }
 
 /*----公共样式----*/
 html { font-size:20px; background-color:#fff; }
-body { font-family: "Microsoft YaHei", Arial, sans-serif; color:#333; line-height:1.8; font-size:0.35rem; }
+body { font-family: "Microsoft YaHei", Arial, sans-serif; color:#333; line-height:1.8; font-size:14px; }
 body, h1, h2, h3, input { font-weight:normal; }
 h1, h2, h3 { font-size:0.4rem; }
 .clearfix:after { display: block; height: 0; content: "."; clear: both; visibility: hidden; }
 .left { float: left; }
 .right { float: right; }
 a { color:#333; }
-a:hover { color:#06C; }
+a:hover { color:#999; }
 
-/*页码*/
+/*页码
 .pagination { overflow: hidden; margin: 0.5rem 0; border-radius:4px; }
 .pagination>li { display: inline; }
 .pagination>li:first-child>a { margin-left: 0; border-top-left-radius: 4px;border-bottom-left-radius: 4px; }
@@ -55,12 +55,12 @@ a:hover { color:#06C; }
 }
 .pagination>li>a { position: relative; float: left; padding: 6px 12px; margin-left: -1px; line-height: 1.42857143; color: #06C; border: 1px solid #eee;
 }
-.pagination>.active>a { z-index: 1; background-color: #06c; color: #fff; border-color: #06c; }
+.pagination>.active>a { z-index: 1; background-color: #06c; color: #fff; border-color: #06c; }*/
 /*----公共code----*/
 /*--头部--*/
-header { position:fixed; top:0; left:0; right:0; z-index:100; padding:0 2rem; height:1.6rem; line-height:1.6rem; background-color:rgba(17, 17, 17, 0.6); opacity:1; }
+header { position:fixed; top:0; left:0; right:0; z-index:100; padding:0 2rem; height:60px; line-height:60px; background-color: #111; opacity:1; }
 header a { color:#fff; }
-.logo, .page-nav { height:100%; font-size:0.6rem; }
+.logo, .page-nav { height:100%; font-size: 20px; }
 .logo { float:left; }
 .logo a:hover { color: #fff; }
 .page-nav { float:right; }
@@ -78,13 +78,13 @@ main { position:relative; z-index:10; margin-bottom:11rem; min-height:900px; pad
 /*--尾部--*/
 footer { position:fixed; bottom:0; left:0; right:0; height:11rem; line-height:1.5; background-color:#111; }
 .foot-content { opacity:0; }
-.foot-content a { color:#666; transition:all 0.3s; font-size:0.5rem; }
+.foot-content a { color:#666; transition:all 0.3s; font-size: 18px; }
 .foot-content a:hover { color:#fff; }
 .contact, .copyright { text-align:center; color:#fff; }
-.contact { padding:3rem 0; font-size:0.8rem; }
+.contact { padding:3rem 0; font-size: 30px; }
 .contact a { border-bottom:1px solid #222; }
 .contact a:hover { word-break:break-word; border-bottom:1px solid #fff; }
-.copyright a { font-size:0.3rem;  }
+.copyright a { font-size:12px;  }
 
 
 
