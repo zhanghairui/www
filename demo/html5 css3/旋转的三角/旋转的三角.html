@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>张海瑞 - zhanghairui.com</title>
+<style>
+* { margin: 0; padding: 0; }
+a { outline: none; text-decoration: none; }
+li { list-style-type: none; }
+
+@font-face {
+	font-family: 'aliyun-console-font';
+	src: url('aliyun-console-font.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.dropdown { position:absolute; top: 100px; left: 100px; font-style: 14px; border: 1px solid #008fbf; }
+.dropdown .btn { display: block; background-color: #008fbf; padding: 0 10px; height: 50px; line-height: 50px; color: #fff; }
+.open .btn { background-color: #fff; color: #333; }
+.dropdown .icon-arrow { display: inline-block; width: 18px; font-family: 'aliyun-console-font';-webkit-font-smoothing:antialiased; text-align: center; vertical-align: middle;
+	transition: transform 0.2s, vertical-align 0.2s; }
+.open .icon-arrow { transform: rotate(180deg); vertical-align: top; }
+.dropdown .icon-arrow:before { content: "\e608"; }
+</style>
+</head>
+<body>
+	<div class="dropdown">
+    	<a href="javascript:;" class="btn">标题<span class="icon-arrow"></span></a>
+    </div>
+
+    <script>
+    	var oDiv=document.querySelector('.dropdown');
+
+    	oDiv.onclick=function (){
+    		oDiv.classList.toggle('open');
+    	};
+    </script>
+</body>
+</html>
